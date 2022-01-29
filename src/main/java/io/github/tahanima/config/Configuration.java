@@ -22,4 +22,7 @@ public interface Configuration extends Config {
 
     @Key("base.url")
     String baseUrl();
+
+    @Key("base.test.data.path")
+    String baseTestDataPath();
 }
