@@ -13,7 +13,12 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.1.1'
     implementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
     implementation 'org.aeonbits.owner:owner:1.0.12'
+    implementation 'com.univocity:univocity-parsers:2.9.1'
+
+    testImplementation 'org.testng:testng:7.5'
+    testImplementation 'org.assertj:assertj-core:3.22.0'
 }
 
 test {
+    useTestNG()
 }
