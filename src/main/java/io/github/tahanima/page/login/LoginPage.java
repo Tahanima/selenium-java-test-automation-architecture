@@ -3,6 +3,7 @@ package io.github.tahanima.page.login;
 import static io.github.tahanima.config.ConfigurationManager.configuration;
 
 import io.github.tahanima.page.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -23,8 +24,10 @@ public class LoginPage extends BasePage {
     @FindBy(id = "login-button")
     private WebElement btnLogin;
 
-    public void goTo() {
+    public LoginPage goTo() {
         getDriver().get(configuration().baseUrl());
+
+        return this;
     }
 
     public LoginPage enterUsername(final String username) {
@@ -39,6 +42,13 @@ public class LoginPage extends BasePage {
         txtPassword.sendKeys(password);
 
         return this;
+    }
+
+    public String getErrorMessage() {
+        return getDriver()
+                .findElement(By.className("error-message-container"))
+                .findElement(By.tagName("h3"))
+                .getText();
     }
 
     public void clickLogin() {
