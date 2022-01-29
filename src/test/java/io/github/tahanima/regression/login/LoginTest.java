@@ -76,7 +76,6 @@ public class LoginTest extends BaseTest {
     @Test(testName = "TC-5", dataProvider = "loginData")
     public void testBlankUserName(final LoginDto loginDto) {
         loginPage.goTo()
-                .enterUsername(loginDto.getUserName())
                 .enterPassword(loginDto.getPassword())
                 .clickLogin();
 
@@ -87,7 +86,6 @@ public class LoginTest extends BaseTest {
     public void testBlankPassword(final LoginDto loginDto) {
         loginPage.goTo()
                 .enterUsername(loginDto.getUserName())
-                .enterPassword(loginDto.getPassword())
                 .clickLogin();
 
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
