@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.AbstractDriverOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
@@ -18,7 +17,7 @@ import org.openqa.selenium.safari.SafariOptions;
  * This enum handles the initialization of browser drivers.
  *
  * <p>
- * This project makes use of the chrome driver and the firefox driver currently.
+ * This project makes use of the drivers - chrome, firefox and safari currently.
  * So, this enum contains the initialization logic of these browser drivers.
  * </p>
  *
@@ -26,6 +25,10 @@ import org.openqa.selenium.safari.SafariOptions;
  * @since 01/24/2022
  */
 public enum BrowserFactory {
+    /**
+     * Contains all the initialization logic
+     * for the chrome driver.
+     */
     CHROME {
         @Override
         public WebDriver initializeDriver() {
@@ -39,8 +42,7 @@ public enum BrowserFactory {
             return driver;
         }
 
-        @Override
-        public ChromeOptions getOptions() {
+        private ChromeOptions getOptions() {
             ChromeOptions options = new ChromeOptions();
 
             options.setAcceptInsecureCerts(true);
@@ -48,7 +50,13 @@ public enum BrowserFactory {
 
             return options;
         }
-    }, FIREFOX {
+    },
+
+    /**
+     * Contains all the initialization logic
+     * for the firefox driver.
+     */
+    FIREFOX {
         @Override
         public WebDriver initializeDriver() {
             WebDriverManager.firefoxdriver().setup();
@@ -61,8 +69,7 @@ public enum BrowserFactory {
             return driver;
         }
 
-        @Override
-        public FirefoxOptions getOptions() {
+        private FirefoxOptions getOptions() {
             FirefoxOptions options = new FirefoxOptions();
 
             options.setAcceptInsecureCerts(true);
@@ -70,7 +77,13 @@ public enum BrowserFactory {
 
             return options;
         }
-    }, SAFARI {
+    },
+
+    /**
+     * Contains all the initialization logic
+     * for the safari driver.
+     */
+    SAFARI {
         @Override
         public WebDriver initializeDriver() {
             WebDriverManager.safaridriver().setup();
@@ -83,8 +96,7 @@ public enum BrowserFactory {
             return driver;
         }
 
-        @Override
-        public SafariOptions getOptions() {
+        private SafariOptions getOptions() {
             SafariOptions options = new SafariOptions();
 
             options.setAcceptInsecureCerts(true);
@@ -99,7 +111,8 @@ public enum BrowserFactory {
         }
     };
 
+    /**
+     * @return an instance of browser driver implementation
+     */
     public abstract WebDriver initializeDriver();
-
-    public abstract AbstractDriverOptions<?> getOptions();
 }

@@ -4,7 +4,7 @@ import static io.github.tahanima.config.ConfigurationManager.configuration;
 
 import com.univocity.parsers.csv.CsvParserSettings;
 import com.univocity.parsers.csv.CsvRoutines;
-import io.github.tahanima.dto.BaseDto;
+import io.github.tahanima.data.BaseData;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public final class DataProviderUtil {
     private DataProviderUtil() { }
 
-    private static Object[][] convert(final ArrayList<ArrayList<? extends BaseDto>> data) {
+    private static Object[][] convert(final ArrayList<ArrayList<? extends BaseData>> data) {
         int noOfRows = data.size();
         Object[][] dataArray = new Object[noOfRows][1];
 
@@ -30,7 +30,7 @@ public final class DataProviderUtil {
         return dataArray;
     }
 
-    public static Object[][] processCsv(final Class<? extends BaseDto> clazz,
+    public static Object[][] processCsv(final Class<? extends BaseData> clazz,
                                         String csvFilePath,
                                         final String testCaseId) {
         CsvParserSettings parserSettings = new CsvParserSettings();
@@ -40,9 +40,9 @@ public final class DataProviderUtil {
 
         try (Reader inputReader = new InputStreamReader(new FileInputStream(
                 csvFilePath), StandardCharsets.UTF_8)) {
-            ArrayList<ArrayList<? extends BaseDto>> parsedData = new ArrayList<>();
+            ArrayList<ArrayList<? extends BaseData>> parsedData = new ArrayList<>();
 
-            for (BaseDto baseDto: routines.iterate(clazz, inputReader)) {
+            for (BaseData baseDto: routines.iterate(clazz, inputReader)) {
                 if (baseDto.getTestCaseId().equals(testCaseId)) {
                     parsedData.add(new ArrayList<>() {{
                         add(baseDto);

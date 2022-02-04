@@ -16,12 +16,15 @@ public final class DriverManager {
     private DriverManager() { }
 
     /**
-     * @return instance of browser driver implementation
+     * @return an instance of browser driver implementation
      */
     public static WebDriver createDriver() {
-        return (driver == null)
-                ? BrowserFactory.valueOf(configuration().browser().toUpperCase())
-                .initializeDriver()
-                : driver;
+        if (driver == null) {
+            driver = BrowserFactory
+                    .valueOf(configuration().browser().toUpperCase())
+                    .initializeDriver();
+        }
+
+        return driver;
     }
 }

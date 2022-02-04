@@ -1,13 +1,16 @@
-package io.github.tahanima.dto.login;
+package io.github.tahanima.data.login;
 
 import com.univocity.parsers.annotations.Parsed;
-import io.github.tahanima.dto.BaseDto;
+import io.github.tahanima.data.BaseData;
 
 /**
+ * This class captures all the test data properties
+ * required for the login page.
+ *
  * @author tahanima
  * @since 01/29/2022
  */
-public class LoginDto extends BaseDto {
+public class LoginData extends BaseData {
     @Parsed(field = "User Name")
     private String userName;
 
@@ -31,11 +34,10 @@ public class LoginDto extends BaseDto {
 
     @Override
     public String toString() {
-        return "LoginDto{"
-                + super.toString()
-                + ", userName=" + userName
-                + ", password=" + password
-                + ", errorMessage=" + errorMessage
-                + '}';
+        return String.format("{%s, userName=%s, password=%s, errorMessage=%s}",
+                super.toString(),
+                userName,
+                password,
+                errorMessage);
     }
 }

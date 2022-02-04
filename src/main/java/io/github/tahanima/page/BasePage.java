@@ -1,5 +1,8 @@
 package io.github.tahanima.page;
 
+import static io.github.tahanima.config.ConfigurationManager.configuration;
+
+import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -20,5 +23,12 @@ public class BasePage {
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public void captureScreenshot(String fileName) {
+        Shutterbug
+                .shootPage(driver)
+                .withName(fileName)
+                .save(configuration().baseReportPath() + configuration().baseScreenshotPath());
     }
 }

@@ -8,9 +8,15 @@ import org.openqa.selenium.WebDriver;
  * @author tahanima
  * @since 01/25/2022
  */
-public class BasePageFactory {
+public final class BasePageFactory {
     private BasePageFactory() { }
 
+    /**
+     * @param driver browser driver instance
+     * @param page POM class instance
+     * @param <T> subclass of BasePage
+     * @return a new instance of the POM class
+     */
     public static <T extends BasePage> T createInstance(final WebDriver driver,
                                                         final Class<T> page) {
         try {

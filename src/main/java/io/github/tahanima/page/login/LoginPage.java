@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
  * @author tahanima
  * @since 01/25/2022
  */
-public class LoginPage extends BasePage {
+public final class LoginPage extends BasePage {
     @FindBy(id = "user-name")
     private WebElement txtUsername;
 

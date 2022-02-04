@@ -10,5 +10,7 @@ The project uses the following:
 - **TestNG**
 - **AssertJ**
 - **Owner**
+- **Extent Reports**
+- **Selenium Shutterbug**
 - **Gradle**
 - **IntelliJ IDEA**

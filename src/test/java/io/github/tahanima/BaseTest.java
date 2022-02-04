@@ -6,6 +6,7 @@ import io.github.tahanima.page.BasePageFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 
 /**
  * This class provides the basic functionalities
@@ -14,6 +15,7 @@ import org.testng.annotations.BeforeClass;
  * @author tahanima
  * @since 01/26/2022
  */
+@Listeners(TestListener.class)
 public abstract class BaseTest {
     private final WebDriver driver = DriverManager.createDriver();
 

@@ -1,12 +1,15 @@
-package io.github.tahanima.dto;
+package io.github.tahanima.data;
 
 import com.univocity.parsers.annotations.Parsed;
 
 /**
+ * This class provides common properties
+ * for all the test data.
+ *
  * @author tahanima
  * @since 01/29/2022
  */
-public class BaseDto {
+public class BaseData {
     @Parsed(field = "Test Case ID")
     private String testCaseId;
 
@@ -23,7 +26,8 @@ public class BaseDto {
 
     @Override
     public String toString() {
-        return "testCaseId=" + testCaseId
-                + ", testCaseDescription=" + testCaseDescription;
+        return String.format("testCaseId=%s, testCaseDescription=%s",
+                testCaseId,
+                testCaseDescription);
     }
 }
