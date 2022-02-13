@@ -42,10 +42,10 @@ public final class DataProviderUtil {
                 csvFilePath), StandardCharsets.UTF_8)) {
             ArrayList<ArrayList<? extends BaseData>> parsedData = new ArrayList<>();
 
-            for (BaseData baseDto: routines.iterate(clazz, inputReader)) {
-                if (baseDto.getTestCaseId().equals(testCaseId)) {
+            for (BaseData baseData: routines.iterate(clazz, inputReader)) {
+                if (baseData.getTestCaseId().equals(testCaseId)) {
                     parsedData.add(new ArrayList<>() {{
-                        add(baseDto);
+                        add(baseData);
                     }});
                 }
             }
