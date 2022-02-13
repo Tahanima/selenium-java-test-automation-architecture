@@ -10,10 +10,10 @@ import com.univocity.parsers.annotations.Parsed;
  * @since 01/29/2022
  */
 public class BaseData {
-    @Parsed(field = "Test Case ID")
+    @Parsed(field = "Test Case ID", defaultNullRead = "")
     private String testCaseId;
 
-    @Parsed(field = "Test Case Description")
+    @Parsed(field = "Test Case Description", defaultNullRead = "")
     private String testCaseDescription;
 
     public String getTestCaseId() {

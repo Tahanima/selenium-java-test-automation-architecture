@@ -11,13 +11,13 @@ import io.github.tahanima.data.BaseData;
  * @since 01/29/2022
  */
 public class LoginData extends BaseData {
-    @Parsed(field = "User Name")
+    @Parsed(field = "User Name", defaultNullRead = "")
     private String userName;
 
-    @Parsed(field = "Password")
+    @Parsed(field = "Password", defaultNullRead = "")
     private String password;
 
-    @Parsed(field = "Error Message")
+    @Parsed(field = "Error Message", defaultNullRead = "")
     private String errorMessage;
 
     public String getUserName() {
