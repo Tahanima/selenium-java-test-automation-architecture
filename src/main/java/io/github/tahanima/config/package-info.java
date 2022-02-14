@@ -8,7 +8,7 @@
  * This package intends to provide a reader for the global parameters.
  * </p>
  *
- * @since 01/24/2022
  * @author tahanima
+ * @since 01/24/2022
  */
 package io.github.tahanima.config;
