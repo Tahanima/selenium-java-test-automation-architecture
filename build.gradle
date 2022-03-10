@@ -17,6 +17,9 @@ dependencies {
     implementation 'com.aventstack:extentreports:5.0.9'
     implementation 'com.assertthat:selenium-shutterbug:1.5'
 
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
     testImplementation 'org.testng:testng:7.5'
     testImplementation 'org.assertj:assertj-core:3.22.0'
 }
