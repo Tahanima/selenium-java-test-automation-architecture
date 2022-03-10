@@ -2,6 +2,7 @@ package io.github.tahanima.data.login;
 
 import com.univocity.parsers.annotations.Parsed;
 import io.github.tahanima.data.BaseData;
+import lombok.Getter;
 
 /**
  * This class captures all the test data properties
@@ -11,26 +12,17 @@ import io.github.tahanima.data.BaseData;
  * @since 01/29/2022
  */
 public class LoginData extends BaseData {
+    @Getter
     @Parsed(field = "User Name", defaultNullRead = "")
     private String userName;
 
+    @Getter
     @Parsed(field = "Password", defaultNullRead = "")
     private String password;
 
+    @Getter
     @Parsed(field = "Error Message", defaultNullRead = "")
     private String errorMessage;
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
 
     @Override
     public String toString() {
