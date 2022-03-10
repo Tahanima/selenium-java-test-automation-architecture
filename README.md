@@ -11,6 +11,7 @@ The project uses the following:
 - *[Univocity Parsers](https://www.univocity.com/pages/univocity_parsers_tutorial)* to parse and handle CSV files.
 - *[TestNG](https://testng.org/doc/)* as the testing framework.
 - *[AssertJ](https://assertj.github.io/doc/)* as the assertion library.
+- *[Lombok](https://projectlombok.org/)* to generate getters.
 - *[Owner](http://owner.aeonbits.org/)* to minimize the code to handle properties file.
 - *[Extent Reports](https://www.extentreports.com/)* as the test reporting strategy.
 - *[Selenium Shutterbug](https://github.com/assertthat/selenium-shutterbug)* for capturing screenshots.
