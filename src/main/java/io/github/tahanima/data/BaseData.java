@@ -2,6 +2,7 @@ package io.github.tahanima.data;
 
 import com.univocity.parsers.annotations.Parsed;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * This class provides common properties
@@ -10,6 +11,7 @@ import lombok.Getter;
  * @author tahanima
  * @since 01/29/2022
  */
+@ToString
 public class BaseData {
     @Getter
     @Parsed(field = "Test Case ID", defaultNullRead = "")

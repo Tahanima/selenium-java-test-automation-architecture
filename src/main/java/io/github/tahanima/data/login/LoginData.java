@@ -12,7 +12,7 @@ import lombok.ToString;
  * @author tahanima
  * @since 01/29/2022
  */
-@ToString
+@ToString(callSuper = true)
 public class LoginData extends BaseData {
     @Getter
     @Parsed(field = "User Name", defaultNullRead = "")
