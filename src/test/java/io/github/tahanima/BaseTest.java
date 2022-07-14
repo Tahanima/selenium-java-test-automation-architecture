@@ -9,33 +9,32 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 
 /**
- * This class provides the basic functionalities
- * required by the test scripts.
+ * This class provides the basic functionalities required by the test scripts.
  *
  * @author tahanima
  * @since 01/26/2022
  */
 @Listeners(TestListener.class)
 public abstract class BaseTest {
-    private final WebDriver driver = DriverManager.createDriver();
+  private final WebDriver driver = DriverManager.createDriver();
 
-    public abstract void initialize();
+  public abstract void initialize();
 
-    protected <T extends BasePage> T createInstance(final Class<T> page) {
-        return BasePageFactory.createInstance(driver, page);
-    }
+  protected <T extends BasePage> T createInstance(final Class<T> page) {
+    return BasePageFactory.createInstance(driver, page);
+  }
 
-    public WebDriver getDriver() {
-        return driver;
-    }
+  public WebDriver getDriver() {
+    return driver;
+  }
 
-    @BeforeClass
-    public void setup() {
-        initialize();
-    }
+  @BeforeClass
+  public void setup() {
+    initialize();
+  }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-    }
+  @AfterClass
+  public void tearDown() {
+    driver.quit();
+  }
 }

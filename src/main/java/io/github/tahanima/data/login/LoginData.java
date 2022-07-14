@@ -6,23 +6,22 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * This class captures all the test data properties
- * required for the login page.
+ * This class captures all the test data properties required for the login page.
  *
  * @author tahanima
  * @since 01/29/2022
  */
 @ToString(callSuper = true)
 public class LoginData extends BaseData {
-    @Getter
-    @Parsed(field = "User Name", defaultNullRead = "")
-    private String userName;
+  @Getter
+  @Parsed(field = "User Name", defaultNullRead = "")
+  private String userName;
 
-    @Getter
-    @Parsed(field = "Password", defaultNullRead = "")
-    private String password;
+  @Getter
+  @Parsed(field = "Password", defaultNullRead = "")
+  private String password;
 
-    @Getter
-    @Parsed(field = "Error Message", defaultNullRead = "")
-    private String errorMessage;
+  @Getter
+  @Parsed(field = "Error Message", defaultNullRead = "")
+  private String errorMessage;
 }

@@ -11,20 +11,18 @@ import org.openqa.selenium.WebDriver;
  * @since 01/24/2022
  */
 public final class DriverManager {
-    private static WebDriver driver = null;
+  private static WebDriver driver = null;
 
-    private DriverManager() { }
+  private DriverManager() {}
 
-    /**
-     * @return an instance of browser driver implementation
-     */
-    public static WebDriver createDriver() {
-        if (driver == null) {
-            driver = BrowserFactory
-                    .valueOf(configuration().browser().toUpperCase())
-                    .initializeDriver();
-        }
-
-        return driver;
+  /**
+   * @return an instance of browser driver implementation
+   */
+  public static WebDriver createDriver() {
+    if (driver == null) {
+      driver = BrowserFactory.valueOf(configuration().browser().toUpperCase()).initializeDriver();
     }
+
+    return driver;
+  }
 }

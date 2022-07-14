@@ -16,103 +16,88 @@ import org.openqa.selenium.safari.SafariOptions;
 /**
  * This enum handles the initialization of browser drivers.
  *
- * <p>
- * This project makes use of the drivers - chrome, firefox and safari currently.
- * So, this enum contains the initialization logic of these browser drivers.
- * </p>
+ * <p>This project makes use of the drivers - chrome, firefox and safari currently. So, this enum
+ * contains the initialization logic of these browser drivers.
  *
  * @author tahanima
  * @since 01/24/2022
  */
 public enum BrowserFactory {
-    /**
-     * Contains all the initialization logic
-     * for the chrome driver.
-     */
-    CHROME {
-        @Override
-        public WebDriver initializeDriver() {
-            WebDriverManager.chromedriver().setup();
-            WebDriver driver = new ChromeDriver(getOptions());
+  /** Contains all the initialization logic for the chrome driver. */
+  CHROME {
+    @Override
+    public WebDriver initializeDriver() {
+      WebDriverManager.chromedriver().setup();
+      WebDriver driver = new ChromeDriver(getOptions());
 
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(
-                    configuration().timeout()));
-            driver.manage().window().maximize();
+      driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configuration().timeout()));
+      driver.manage().window().maximize();
 
-            return driver;
-        }
+      return driver;
+    }
 
-        private ChromeOptions getOptions() {
-            ChromeOptions options = new ChromeOptions();
+    private ChromeOptions getOptions() {
+      ChromeOptions options = new ChromeOptions();
 
-            options.setAcceptInsecureCerts(true);
-            options.setHeadless(configuration().headless());
+      options.setAcceptInsecureCerts(true);
+      options.setHeadless(configuration().headless());
 
-            return options;
-        }
-    },
+      return options;
+    }
+  },
 
-    /**
-     * Contains all the initialization logic
-     * for the firefox driver.
-     */
-    FIREFOX {
-        @Override
-        public WebDriver initializeDriver() {
-            WebDriverManager.firefoxdriver().setup();
-            WebDriver driver = new FirefoxDriver(getOptions());
+  /** Contains all the initialization logic for the firefox driver. */
+  FIREFOX {
+    @Override
+    public WebDriver initializeDriver() {
+      WebDriverManager.firefoxdriver().setup();
+      WebDriver driver = new FirefoxDriver(getOptions());
 
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(
-                    configuration().timeout()));
-            driver.manage().window().maximize();
+      driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configuration().timeout()));
+      driver.manage().window().maximize();
 
-            return driver;
-        }
+      return driver;
+    }
 
-        private FirefoxOptions getOptions() {
-            FirefoxOptions options = new FirefoxOptions();
+    private FirefoxOptions getOptions() {
+      FirefoxOptions options = new FirefoxOptions();
 
-            options.setAcceptInsecureCerts(true);
-            options.setHeadless(configuration().headless());
+      options.setAcceptInsecureCerts(true);
+      options.setHeadless(configuration().headless());
 
-            return options;
-        }
-    },
+      return options;
+    }
+  },
 
-    /**
-     * Contains all the initialization logic
-     * for the safari driver.
-     */
-    SAFARI {
-        @Override
-        public WebDriver initializeDriver() {
-            WebDriverManager.safaridriver().setup();
-            WebDriver driver = new SafariDriver(getOptions());
+  /** Contains all the initialization logic for the safari driver. */
+  SAFARI {
+    @Override
+    public WebDriver initializeDriver() {
+      WebDriverManager.safaridriver().setup();
+      WebDriver driver = new SafariDriver(getOptions());
 
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(
-                    configuration().timeout()));
-            driver.manage().window().maximize();
+      driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configuration().timeout()));
+      driver.manage().window().maximize();
 
-            return driver;
-        }
+      return driver;
+    }
 
-        private SafariOptions getOptions() {
-            SafariOptions options = new SafariOptions();
+    private SafariOptions getOptions() {
+      SafariOptions options = new SafariOptions();
 
-            options.setAcceptInsecureCerts(true);
+      options.setAcceptInsecureCerts(true);
 
-            if (TRUE.equals(configuration().headless())) {
-                throw new IllegalStateException(String.format(
-                        "Headless not supported for %s browser",
-                        configuration().browser()));
-            }
+      if (TRUE.equals(configuration().headless())) {
+        throw new IllegalStateException(
+            String.format("Headless not supported for %s browser", configuration().browser()));
+      }
 
-            return options;
-        }
-    };
+      return options;
+    }
+  };
 
-    /**
-     * @return an instance of browser driver implementation
-     */
-    public abstract WebDriver initializeDriver();
+  /**
+   * @return an instance of browser driver implementation
+   */
+  public abstract WebDriver initializeDriver();
 }

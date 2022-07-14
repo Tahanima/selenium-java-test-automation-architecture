@@ -18,46 +18,53 @@ import org.testng.ITestResult;
  * @since 02/03/2022
  */
 public final class TestListener implements ITestListener {
-    private static final ExtentReports REPORT = ReportManager.createReport();
+  private static final ExtentReports REPORT = ReportManager.createReport();
 
-    @Override
-    public void onTestSuccess(final ITestResult result) {
-        ITestNGMethod method = result.getMethod();
-        String testData = result.getParameters()[0].toString();
+  @Override
+  public void onTestSuccess(final ITestResult result) {
+    ITestNGMethod method = result.getMethod();
+    String testData = result.getParameters()[0].toString();
 
-        ExtentTest test = REPORT.createTest(method.getMethodName())
-                .assignCategory(method.getRealClass().getSimpleName())
-                .pass(String.format("Test Data: %s%n", testData));
-    }
+    ExtentTest test =
+        REPORT
+            .createTest(method.getMethodName())
+            .assignCategory(method.getRealClass().getSimpleName())
+            .pass(String.format("Test Data: %s%n", testData));
+  }
 
-    @Override
-    public void onTestFailure(final ITestResult result) {
-        ITestNGMethod method = result.getMethod();
-        String testData = result.getParameters()[0].toString();
+  @Override
+  public void onTestFailure(final ITestResult result) {
+    ITestNGMethod method = result.getMethod();
+    String testData = result.getParameters()[0].toString();
 
-        ExtentTest test = REPORT.createTest(method.getMethodName())
-                .assignCategory(method.getRealClass().getSimpleName())
-                .fail(String.format("Test Data: %s%n", testData))
-                .fail(result.getThrowable(),
-                        MediaEntityBuilder.createScreenCaptureFromPath(
-                                String.format("%s%s.png",
-                                        configuration().baseScreenshotPath(),
-                                        method.getMethodName())
-                        ).build());
-    }
+    ExtentTest test =
+        REPORT
+            .createTest(method.getMethodName())
+            .assignCategory(method.getRealClass().getSimpleName())
+            .fail(String.format("Test Data: %s%n", testData))
+            .fail(
+                result.getThrowable(),
+                MediaEntityBuilder.createScreenCaptureFromPath(
+                        String.format(
+                            "%s%s.png",
+                            configuration().baseScreenshotPath(), method.getMethodName()))
+                    .build());
+  }
 
-    @Override
-    public void onTestSkipped(final ITestResult result) {
-        ITestNGMethod method = result.getMethod();
-        String testData = result.getParameters()[0].toString();
+  @Override
+  public void onTestSkipped(final ITestResult result) {
+    ITestNGMethod method = result.getMethod();
+    String testData = result.getParameters()[0].toString();
 
-        ExtentTest test = REPORT.createTest(method.getMethodName())
-                .assignCategory(method.getRealClass().getSimpleName())
-                .skip(String.format("Test Data: %s%n", testData));
-    }
+    ExtentTest test =
+        REPORT
+            .createTest(method.getMethodName())
+            .assignCategory(method.getRealClass().getSimpleName())
+            .skip(String.format("Test Data: %s%n", testData));
+  }
 
-    @Override
-    public void onFinish(final ITestContext context) {
-        REPORT.flush();
-    }
+  @Override
+  public void onFinish(final ITestContext context) {
+    REPORT.flush();
+  }
 }
