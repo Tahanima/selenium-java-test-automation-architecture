@@ -1,6 +1,6 @@
-# Selenium Test Automation Boilerplate
+# Selenium Test Automation Project
 
-Ready-to-use UI Test Automation Architecture using Java and Selenium WebDriver.
+Project built from a Ready-to-use UI Test Automation Architecture using Java and Selenium WebDriver.
 
 ## Languages and Frameworks
 
