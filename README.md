@@ -1,6 +1,13 @@
 # Selenium Test Automation Boilerplate
 
-Ready-to-use UI Test Automation Architecture using Java and Selenium WebDriver.
+Ready-to-use UI Test Automation Architecture using Java and Selenium WebDriver. In order to use the framework:
+
+1. [Fork](https://github.com/Tahanima/selenium-test-automation-boilerplate/fork) the repository.
+2. Clone, i.e, download your copy of the repository to your local machine using
+```
+git clone https://github.com/[your_username]/selenium-test-automation-boilerplate.git
+```
+3. Import the project in [IntelliJ IDEA](https://www.jetbrains.com/idea/download/).
 
 ## Languages and Frameworks
 
@@ -19,74 +26,76 @@ The project uses the following:
 - *[IntelliJ IDEA](https://www.jetbrains.com/idea/)* as the IDE.
 
 ## Project Structure
+
+The project is structured as follows:
+
 ```bash
-selenium-test-automation-boilerplate/
-├─ .github/
-│  ├─ workflows/
-│  │  ├─ test-execution.yml
-├─ gradle/
-│  ├─ wrapper/
-│  │  ├─ gradle-wrapper.jar
-│  │  ├─ gradle-wrapper.properties
-├─ report/
-│  ├─ screenshot/
-├─ script/
-│  ├─ install_chrome.sh
-├─ src/
-│  ├─ main/
-│  │  ├─ java/
-│  │  │  ├─ io/
-│  │  │  │  ├─ github/
-│  │  │  │  │  ├─ tahanima/
-│  │  │  │  │  │  ├─ config/
-│  │  │  │  │  │  │  ├─ Configuration.java
-│  │  │  │  │  │  │  ├─ ConfigurationManager.java
-│  │  │  │  │  │  │  ├─ package-info.java
-│  │  │  │  │  │  ├─ data/
-│  │  │  │  │  │  │  ├─ login/
-│  │  │  │  │  │  │  │  ├─ LoginData.java
-│  │  │  │  │  │  │  ├─ BaseData.java
-│  │  │  │  │  │  │  ├─ package-info.java
-│  │  │  │  │  │  ├─ driver/
-│  │  │  │  │  │  │  ├─ BrowserFactory.java
-│  │  │  │  │  │  │  ├─ DriverManager.java
-│  │  │  │  │  │  │  ├─ package-info.java
-│  │  │  │  │  │  ├─ page/
-│  │  │  │  │  │  │  ├─ login/
-│  │  │  │  │  │  │  │  ├─ LoginPage.java
-│  │  │  │  │  │  │  ├─ product/
-│  │  │  │  │  │  │  │  ├─ ProductsPage.java
-│  │  │  │  │  │  │  ├─ BasePage.java
-│  │  │  │  │  │  │  ├─ BasePageFactory.java
-│  │  │  │  │  │  │  ├─ package-info.java.java
-│  │  │  │  │  │  ├─ report/
-│  │  │  │  │  │  │  ├─ ReportManager.java
-│  │  │  │  │  │  │  ├─ package-info.java
-│  │  ├─ resources/
-│  │  │  ├─ general.properties
-│  ├─ test/
-│  │  ├─ java/
-│  │  │  ├─ io/
-│  │  │  │  ├─ github/
-│  │  │  │  │  ├─ tahanima/
-│  │  │  │  │  │  ├─ login/
-│  │  │  │  │  │  │  ├─ LoginTest.java
-│  │  │  │  │  │  ├─ util/
-│  │  │  │  │  │  │  ├─ DataProviderUtil.java
-│  │  │  │  │  │  ├─ BaseTest.java
-│  │  │  │  │  │  ├─ TestListener.java
-│  │  ├─ resources/
-│  │  │  ├─ testData/
-│  │  │  │  ├─ login/
-│  │  │  │  │  ├─ login.csv
-├─ .gitignore
-├─ build.gradle
-├─ gradlew
-├─ gradlew.bat
-├─ README.md
-├─ settings.gradle
+📦 selenium-test-automation-boilerplate
+├─ .github
+│  └─ workflows
+│     └─ test-execution.yml
+├─ .gitignore
+├─ README.md
+├─ build.gradle
+├─ gradle
+│  └─ wrapper
+│     ├─ gradle-wrapper.jar
+│     └─ gradle-wrapper.properties
+├─ gradlew
+├─ gradlew.bat
+├─ script
+│  └─ install_chrome.sh
+├─ settings.gradle
+└─ src
+   ├─ main
+   │  ├─ java
+   │  │  └─ io
+   │  │     └─ github
+   │  │        └─ tahanima
+   │  │           ├─ config
+   │  │           │  ├─ Configuration.java
+   │  │           │  ├─ ConfigurationManager.java
+   │  │           │  └─ package-info.java
+   │  │           ├─ data
+   │  │           │  ├─ BaseData.java
+   │  │           │  ├─ login
+   │  │           │  │  └─ LoginData.java
+   │  │           │  └─ package-info.java
+   │  │           ├─ driver
+   │  │           │  ├─ BrowserFactory.java
+   │  │           │  ├─ DriverManager.java
+   │  │           │  └─ package-info.java
+   │  │           ├─ page
+   │  │           │  ├─ BasePage.java
+   │  │           │  ├─ BasePageFactory.java
+   │  │           │  ├─ login
+   │  │           │  │  └─ LoginPage.java
+   │  │           │  ├─ package-info.java
+   │  │           │  └─ product
+   │  │           │     └─ ProductsPage.java
+   │  │           └─ report
+   │  │              ├─ ExtentReportManager.java
+   │  │              └─ package-info.java
+   │  └─ resources
+   │     └─ general.properties
+   └─ test
+      ├─ java
+      │  └─ io
+      │     └─ github
+      │        └─ tahanima
+      │           ├─ BaseTest.java
+      │           ├─ login
+      │           │  └─ LoginTest.java
+      │           └─ util
+      │              ├─ DataProviderUtil.java
+      │              └─ TestListener.java
+      └─ resources
+         └─ testData
+            └─ login
+               └─ login.csv
 ```
-## Project Architecture
+
+## Project Components
 - [Config](#config)
 - [Data](#data)
 - [Driver](#driver)
@@ -96,7 +105,7 @@ selenium-test-automation-boilerplate/
 - [Workflow](#workflow)
 
 ### Config
-The project uses [general.properties](src/main/resources/general.properties) file to map all the global parameters such as browser and base url. All the relevant classes to read the parameters are provided in the [config](src/main/java/io/github/tahanima/config) package.
+The project has some global properties, for example, browser and base url. The [config](https://github.com/Tahanima/selenium-test-automation-boilerplate/blob/main/src/main/java/io/github/tahanima/config) package holds all the relevant classes to handle these global properties.
 
 ### Data
 The project reads test data from csv files. The test data properties are modeled in terms of entities and the `data` package handles this. For convenience, there is an example class - [LoginData.java](src/main/java/io/github/tahanima/data/login/LoginData.java) to demonstrate the usage. 
