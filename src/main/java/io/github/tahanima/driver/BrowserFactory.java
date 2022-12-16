@@ -20,7 +20,6 @@ import org.openqa.selenium.safari.SafariOptions;
  * contains the initialization logic of these browser drivers.
  *
  * @author tahanima
- * @since 01/24/2022
  */
 public enum BrowserFactory {
   /** Contains all the initialization logic for the chrome driver. */

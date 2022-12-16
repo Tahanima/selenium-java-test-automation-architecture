@@ -6,7 +6,6 @@ import org.aeonbits.owner.ConfigCache;
  * This class provides a singleton instance of the Configuration class.
  *
  * @author tahanima
- * @since 01/24/2022
  */
 public final class ConfigurationManager {
   private ConfigurationManager() {}

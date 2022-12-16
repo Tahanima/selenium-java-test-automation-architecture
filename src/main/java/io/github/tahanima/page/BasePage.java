@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
  * This class defines the basic functionalities of a POM class.
  *
  * @author tahanima
- * @since 01/25/2022
  */
 public class BasePage {
   private WebDriver driver;

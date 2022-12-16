@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
  * This class provides a singleton instance of WebDriver.
  *
  * @author tahanima
- * @since 01/24/2022
  */
 public final class DriverManager {
   private static WebDriver driver = null;

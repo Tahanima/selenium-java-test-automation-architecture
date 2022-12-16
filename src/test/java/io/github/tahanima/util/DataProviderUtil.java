@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 /**
  * @author tahanima
- * @since 01/29/2022
  */
 public final class DataProviderUtil {
   private DataProviderUtil() {}

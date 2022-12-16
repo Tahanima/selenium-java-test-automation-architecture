@@ -16,7 +16,6 @@ import org.testng.annotations.Test;
 
 /**
  * @author tahanima
- * @since 01/29/2022
  */
 public class LoginTest extends BaseTest {
   private LoginPage loginPage;

@@ -11,7 +11,6 @@ import org.openqa.selenium.support.FindBy;
  * This class captures the relevant UI components and functionalities of the login page.
  *
  * @author tahanima
- * @since 01/25/2022
  */
 public final class LoginPage extends BasePage {
   @FindBy(id = "user-name")

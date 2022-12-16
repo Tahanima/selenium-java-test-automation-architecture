@@ -8,7 +8,6 @@ import lombok.ToString;
  * This class provides common properties for all the test data.
  *
  * @author tahanima
- * @since 01/29/2022
  */
 @ToString
 public class BaseData {

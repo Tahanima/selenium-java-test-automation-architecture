@@ -9,7 +9,6 @@ import lombok.ToString;
  * This class captures all the test data properties required for the login page.
  *
  * @author tahanima
- * @since 01/29/2022
  */
 @ToString(callSuper = true)
 public class LoginData extends BaseData {

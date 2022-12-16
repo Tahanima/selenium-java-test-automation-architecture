@@ -3,12 +3,13 @@ package io.github.tahanima.config;
 import org.aeonbits.owner.Config;
 
 /**
- * This interface loads the global parameters contained within general.properties file.
+ * This interface loads the global parameters contained within general.properties file and from
+ * system properties.
  *
  * @author tahanima
- * @since 01/24/2022
  */
-@Config.Sources({"classpath:general.properties"})
+@Config.LoadPolicy(Config.LoadType.MERGE)
+@Config.Sources({"system:properties", "classpath:general.properties"})
 public interface Configuration extends Config {
   /**
    * Associates the property 'browser' with the browser() method.
@@ -37,7 +38,7 @@ public interface Configuration extends Config {
   /**
    * Associates the property 'base.url' with the baseUrl() method.
    *
-   * @return a string containing the base url of the AUT
+   * @return a string containing the base url of the application under test
    */
   @Key("base.url")
   String baseUrl();

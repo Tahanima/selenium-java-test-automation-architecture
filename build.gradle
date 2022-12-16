@@ -26,4 +26,5 @@ dependencies {
 
 test {
     useTestNG()
+    systemProperties = System.getProperties() as Map<String, ?>
 }

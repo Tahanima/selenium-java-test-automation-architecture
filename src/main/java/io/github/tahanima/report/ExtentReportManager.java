@@ -9,10 +9,9 @@ import java.util.Date;
 
 /**
  * @author tahanima
- * @since 02/03/2022
  */
-public final class ReportManager {
-  private ReportManager() {}
+public final class ExtentReportManager {
+  private ExtentReportManager() {}
 
   public static ExtentReports createReport() {
     String currentDate = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
@@ -22,6 +21,8 @@ public final class ReportManager {
     ExtentReports extentReport = new ExtentReports();
     ExtentSparkReporter spark = new ExtentSparkReporter(fileName);
     extentReport.attachReporter(spark);
+    extentReport.setSystemInfo("Platform", System.getProperty("os.name"));
+    extentReport.setSystemInfo("Browser", configuration().browser());
 
     return extentReport;
   }

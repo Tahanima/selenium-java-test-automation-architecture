@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
  * This class provides an instance of subclass of BasePage.
  *
  * @author tahanima
- * @since 01/25/2022
  */
 public final class BasePageFactory {
   private BasePageFactory() {}
