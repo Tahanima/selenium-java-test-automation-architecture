@@ -22,7 +22,14 @@ jobs:
         run: |
           chmod +x ./script/install_chrome.sh
            ./script/install_chrome.sh
+      - name: Install Mozilla Firefox
+        run: |
+          chmod +x ./script/install_firefox.sh
+           ./script/install_firefox.sh
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Build with Gradle
+      - name: Build with Gradle (Broswer = Chrome)
         run: ./gradlew test --info
+      - name: Build with Gradle (Browser = Firefox)
+        run: ./gradlew test -Dbrowser=firefox --info
+        
