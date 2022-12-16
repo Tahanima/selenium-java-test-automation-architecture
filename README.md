@@ -1,6 +1,10 @@
 # Selenium Test Automation Boilerplate
 
-Ready-to-use UI Test Automation Architecture using Java and Selenium WebDriver. In order to use the framework:
+Ready-to-use UI Test Automation Architecture using Java and Selenium WebDriver. 
+
+## Installation Steps
+
+In order to use the framework:
 
 1. [Fork](https://github.com/Tahanima/selenium-test-automation-boilerplate/fork) the repository.
 2. Clone, i.e, download your copy of the repository to your local machine using
@@ -8,6 +12,8 @@ Ready-to-use UI Test Automation Architecture using Java and Selenium WebDriver. 
 git clone https://github.com/[your_username]/selenium-test-automation-boilerplate.git
 ```
 3. Import the project in [IntelliJ IDEA](https://www.jetbrains.com/idea/download/).
+4. Make your desired changes.
+5. Use IntelliJ IDEA to run your desired tests. Alternatively, you can use the terminal to run the tests, for example `./gradlew test -Dbrowser=firefox -Dheadless=false` to run all the tests using the firefox browser in headed mode.
 
 ## Languages and Frameworks
 
