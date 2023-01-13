@@ -83,7 +83,7 @@ The project is structured as follows:
    │  │              ├─ ExtentReportManager.java
    │  │              └─ package-info.java
    │  └─ resources
-   │     └─ general.properties
+   │     └─ config.properties
    └─ test
       ├─ java
       │  └─ io

@@ -10,10 +10,10 @@ import org.openqa.selenium.support.FindBy;
  * @author tahanima
  */
 public final class ProductsPage extends BasePage {
-  @FindBy(className = "title")
-  private WebElement lblTitle;
+    @FindBy(className = "title")
+    private WebElement lblTitle;
 
-  public String getTitle() {
-    return lblTitle.getText();
-  }
+    public String getTitle() {
+        return lblTitle.getText();
+    }
 }

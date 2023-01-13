@@ -12,15 +12,15 @@ import lombok.ToString;
  */
 @ToString(callSuper = true)
 public class LoginData extends BaseData {
-  @Getter
-  @Parsed(field = "User Name", defaultNullRead = "")
-  private String userName;
+    @Getter
+    @Parsed(field = "User Name", defaultNullRead = "")
+    private String userName;
 
-  @Getter
-  @Parsed(field = "Password", defaultNullRead = "")
-  private String password;
+    @Getter
+    @Parsed(field = "Password", defaultNullRead = "")
+    private String password;
 
-  @Getter
-  @Parsed(field = "Error Message", defaultNullRead = "")
-  private String errorMessage;
+    @Getter
+    @Parsed(field = "Error Message", defaultNullRead = "")
+    private String errorMessage;
 }
