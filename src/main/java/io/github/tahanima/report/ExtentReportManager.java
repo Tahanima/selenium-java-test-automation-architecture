@@ -23,8 +23,11 @@ public final class ExtentReportManager {
         ExtentReports extentReport = new ExtentReports();
         ExtentSparkReporter spark = new ExtentSparkReporter(fileName);
         extentReport.attachReporter(spark);
+
         extentReport.setSystemInfo("Platform", System.getProperty("os.name"));
+        extentReport.setSystemInfo("Version", System.getProperty("os.version"));
         extentReport.setSystemInfo("Browser", configuration().browser());
+        extentReport.setSystemInfo("Base URL", configuration().baseUrl());
 
         return extentReport;
     }
