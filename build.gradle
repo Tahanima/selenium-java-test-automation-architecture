@@ -25,6 +25,10 @@ dependencies {
 }
 
 test {
-    useTestNG()
     systemProperties = System.getProperties() as Map<String, ?>
+    def groups = System.getProperty('groups', 'regression')
+
+    useTestNG() {
+        includeGroups groups
+    }
 }

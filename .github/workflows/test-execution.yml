@@ -24,8 +24,12 @@ jobs:
            ./script/install_chrome.sh
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Build with Gradle (Broswer = Chrome)
-        run: ./gradlew test --info
-      - name: Build with Gradle (Browser = Firefox)
-        run: ./gradlew test -Dbrowser=firefox --info
+      - name: Run Smoke Tests in Chrome
+        run: ./gradlew test --info -Dgroups=smoke
+      - name: Run Regression Tests in Chrome
+        run: ./gradlew test --info -Dgroups=regression
+      - name: Run Smoke Tests in Firefox
+        run: ./gradlew test -Dbrowser=firefox --info -Dgroups=smoke
+      - name: Run Regression Tests in Firefox
+        run: ./gradlew test -Dbrowser=firefox --info -Dgroups=regression
         

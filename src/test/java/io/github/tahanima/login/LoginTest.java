@@ -43,7 +43,10 @@ public class LoginTest extends BaseTest {
         }
     }
 
-    @Test(testName = "TC-1", dataProvider = "loginData")
+    @Test(
+            testName = "TC-1",
+            dataProvider = "loginData",
+            groups = {"smoke", "regression"})
     public void testCorrectUserNameAndCorrectPassword(final LoginData loginDto) {
         loginPage
                 .goTo()
@@ -56,7 +59,10 @@ public class LoginTest extends BaseTest {
         assertThat(productsPage.getTitle()).isEqualTo("PRODUCTS");
     }
 
-    @Test(testName = "TC-2", dataProvider = "loginData")
+    @Test(
+            testName = "TC-2",
+            dataProvider = "loginData",
+            groups = {"regression"})
     public void testIncorrectUserNameAndCorrectPassword(final LoginData loginDto) {
         loginPage
                 .goTo()
@@ -67,7 +73,10 @@ public class LoginTest extends BaseTest {
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
 
-    @Test(testName = "TC-3", dataProvider = "loginData")
+    @Test(
+            testName = "TC-3",
+            dataProvider = "loginData",
+            groups = {"regression"})
     public void testCorrectUserNameAndIncorrectPassword(final LoginData loginDto) {
         loginPage
                 .goTo()
@@ -78,7 +87,10 @@ public class LoginTest extends BaseTest {
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
 
-    @Test(testName = "TC-4", dataProvider = "loginData")
+    @Test(
+            testName = "TC-4",
+            dataProvider = "loginData",
+            groups = {"regression"})
     public void testIncorrectUserNameAndIncorrectPassword(final LoginData loginDto) {
         loginPage
                 .goTo()
@@ -89,21 +101,30 @@ public class LoginTest extends BaseTest {
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
 
-    @Test(testName = "TC-5", dataProvider = "loginData")
+    @Test(
+            testName = "TC-5",
+            dataProvider = "loginData",
+            groups = {"regression"})
     public void testBlankUserName(final LoginData loginDto) {
         loginPage.goTo().enterPassword(loginDto.getPassword()).clickLogin();
 
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
 
-    @Test(testName = "TC-6", dataProvider = "loginData")
+    @Test(
+            testName = "TC-6",
+            dataProvider = "loginData",
+            groups = {"regression"})
     public void testBlankPassword(final LoginData loginDto) {
         loginPage.goTo().enterUsername(loginDto.getUserName()).clickLogin();
 
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
 
-    @Test(testName = "TC-7", dataProvider = "loginData")
+    @Test(
+            testName = "TC-7",
+            dataProvider = "loginData",
+            groups = {"regression"})
     public void testLockedOutUser(final LoginData loginDto) {
         loginPage
                 .goTo()

@@ -28,12 +28,12 @@ public abstract class BaseTest {
         return driver;
     }
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup() {
         initialize();
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         driver.quit();
     }
