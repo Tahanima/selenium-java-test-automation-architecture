@@ -29,7 +29,7 @@ jobs:
       - name: Run Regression Tests in Chrome
         run: ./gradlew test --info -Dgroups=regression
       - name: Run Smoke Tests in Firefox
-        run: ./gradlew test -Dbrowser=firefox --info -Dgroups=smoke
+        run: ./gradlew test --info -Dbrowser=firefox -Dgroups=smoke
       - name: Run Regression Tests in Firefox
-        run: ./gradlew test -Dbrowser=firefox --info -Dgroups=regression
+        run: ./gradlew test --info -Dbrowser=firefox -Dgroups=regression
         
