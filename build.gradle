@@ -16,12 +16,14 @@ dependencies {
     implementation 'com.univocity:univocity-parsers:2.9.1'
     implementation 'com.aventstack:extentreports:5.0.9'
     implementation 'com.assertthat:selenium-shutterbug:1.5'
+    implementation 'org.slf4j:slf4j-api:2.0.6'
 
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
     testImplementation 'org.testng:testng:7.5'
     testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.6'
 }
 
 test {
