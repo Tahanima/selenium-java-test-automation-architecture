@@ -1,4 +1,4 @@
-package io.github.tahanima.report;
+package io.github.tahanima.utils;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;

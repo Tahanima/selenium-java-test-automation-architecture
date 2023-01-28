@@ -1,6 +1,6 @@
-package io.github.tahanima.page.login;
+package io.github.tahanima.pages.login;
 
-import io.github.tahanima.page.BasePage;
+import io.github.tahanima.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

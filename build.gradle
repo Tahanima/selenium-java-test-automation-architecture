@@ -18,8 +18,8 @@ dependencies {
     implementation 'com.assertthat:selenium-shutterbug:1.5'
     implementation 'org.slf4j:slf4j-api:2.0.6'
 
-    compileOnly 'org.projectlombok:lombok:1.18.22'
-    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 
     testImplementation 'org.testng:testng:7.5'
     testImplementation 'org.assertj:assertj-core:3.22.0'

@@ -1,4 +1,4 @@
-package io.github.tahanima.page;
+package io.github.tahanima.pages;
 
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import org.openqa.selenium.WebDriver;

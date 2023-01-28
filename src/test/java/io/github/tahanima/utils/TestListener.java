@@ -1,9 +1,8 @@
-package io.github.tahanima.util;
+package io.github.tahanima.utils;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import io.github.tahanima.data.BaseData;
-import io.github.tahanima.report.ExtentReportManager;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestNGMethod;

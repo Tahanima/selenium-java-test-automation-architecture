@@ -120,7 +120,7 @@ The project reads test data from csv files. The test data properties are modeled
 The project uses Selenium WebDriver to automate user workflows for web-based applications as part of automated testing. The [driver](src/main/java/io/github/tahanima/driver) package contains all the necessary initialization logic for WebDriver.
 
 ### Page
-The project uses Page Object Model to capture all the relevant UI components and functionalities of a web page. The [page](src/main/java/io/github/tahanima/page) package provides all the classes to achieve this. For convenience, there is an example class - [LoginPage.java](src/main/java/io/github/tahanima/page/login/LoginPage.java) to demonstrate the usage.
+The project uses Page Object Model to capture all the relevant UI components and functionalities of a web page. The [page](src/main/java/io/github/tahanima/pages) package provides all the classes to achieve this. For convenience, there is an example class - [LoginPage.java](src/main/java/io/github/tahanima/pages/login/LoginPage.java) to demonstrate the usage.
 
 ### Report
 The project uses *Extent Reports* to provide test reporting functionalities. The [report](src/main/java/io/github/tahanima/report) package contains the relevant class.

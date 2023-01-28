@@ -1,9 +1,9 @@
-package io.github.tahanima;
+package io.github.tahanima.e2e;
 
 import io.github.tahanima.driver.DriverManager;
-import io.github.tahanima.page.BasePage;
-import io.github.tahanima.page.BasePageFactory;
-import io.github.tahanima.util.TestListener;
+import io.github.tahanima.pages.BasePage;
+import io.github.tahanima.pages.BasePageFactory;
+import io.github.tahanima.utils.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -15,7 +15,7 @@ import org.testng.annotations.Listeners;
  * @author tahanima
  */
 @Listeners(TestListener.class)
-public abstract class BaseTest {
+public abstract class BaseE2ETest {
     private final WebDriver driver = DriverManager.createDriver();
 
     public abstract void initialize();

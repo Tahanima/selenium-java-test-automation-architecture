@@ -6,4 +6,4 @@
  *
  * @author tahanima
  */
-package io.github.tahanima.page;
+package io.github.tahanima.pages;
