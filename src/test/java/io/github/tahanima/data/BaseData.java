@@ -9,13 +9,12 @@ import lombok.ToString;
  *
  * @author tahanima
  */
+@Getter
 @ToString
 public class BaseData {
-    @Getter
     @Parsed(field = "Test Case ID", defaultNullRead = "")
     private String testCaseId;
 
-    @Getter
     @Parsed(field = "Test Case Description", defaultNullRead = "")
     private String testCaseDescription;
 }
