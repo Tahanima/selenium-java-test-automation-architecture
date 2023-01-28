@@ -53,49 +53,42 @@ The project is structured as follows:
 │  └─ install_chrome.sh
 ├─ settings.gradle
 └─ src
-   ├─ main
-   │  ├─ java
-   │  │  └─ io
-   │  │     └─ github
-   │  │        └─ tahanima
-   │  │           ├─ config
-   │  │           │  ├─ Configuration.java
-   │  │           │  ├─ ConfigurationManager.java
-   │  │           │  └─ package-info.java
-   │  │           ├─ data
-   │  │           │  ├─ BaseData.java
-   │  │           │  ├─ login
-   │  │           │  │  └─ LoginData.java
-   │  │           │  └─ package-info.java
-   │  │           ├─ driver
-   │  │           │  ├─ BrowserFactory.java
-   │  │           │  ├─ DriverManager.java
-   │  │           │  └─ package-info.java
-   │  │           ├─ page
-   │  │           │  ├─ BasePage.java
-   │  │           │  ├─ BasePageFactory.java
-   │  │           │  ├─ login
-   │  │           │  │  └─ LoginPage.java
-   │  │           │  ├─ package-info.java
-   │  │           │  └─ product
-   │  │           │     └─ ProductsPage.java
-   │  │           └─ report
-   │  │              ├─ ExtentReportManager.java
-   │  │              └─ package-info.java
-   │  └─ resources
-   │     └─ config.properties
    └─ test
       ├─ java
       │  └─ io
       │     └─ github
       │        └─ tahanima
-      │           ├─ BaseTest.java
-      │           ├─ login
-      │           │  └─ LoginTest.java
-      │           └─ util
+      │           ├─ config
+      │           │  ├─ Configuration.java
+      │           │  ├─ ConfigurationManager.java
+      │           │  └─ package-info.java
+      │           ├─ data
+      │           │  ├─ BaseData.java
+      │           │  ├─ login
+      │           │  │  └─ LoginData.java
+      │           │  └─ package-info.java
+      │           ├─ driver
+      │           │  ├─ BrowserFactory.java
+      │           │  ├─ DriverManager.java
+      │           │  └─ package-info.java
+      │           ├─ e2e
+      │           │  ├─ BaseE2ETest.java
+      │           │  └─ login
+      │           │     └─ LoginE2ETest.java
+      │           ├─ pages
+      │           │  ├─ BasePage.java
+      │           │  ├─ BasePageFactory.java
+      │           │  ├─ login
+      │           │  │  └─ LoginPage.java
+      │           │  ├─ package-info.java
+      │           │  └─ product
+      │           │     └─ ProductsPage.java
+      │           └─ utils
       │              ├─ DataProviderUtil.java
+      │              ├─ ExtentReportManager.java
       │              └─ TestListener.java
       └─ resources
+         ├─ config.properties
          └─ testData
             └─ login
                └─ login.csv
@@ -111,22 +104,22 @@ The project is structured as follows:
 - [Workflow](#workflow)
 
 ### Config
-The project has some global properties, for example, browser and base url. The [config](https://github.com/Tahanima/selenium-test-automation-boilerplate/blob/main/src/main/java/io/github/tahanima/config) package holds all the relevant classes to handle these global properties.
+The project has some global properties, for example, browser and base url. The [config](src/test/java/io/github/tahanima/config) package holds all the relevant classes to handle these global properties.
 
 ### Data
-The project reads test data from csv files. The test data properties are modeled in terms of entities and the `data` package handles this. For convenience, there is an example class - [LoginData.java](src/main/java/io/github/tahanima/data/login/LoginData.java) to demonstrate the usage. 
+The project reads test data from csv files. The test data properties are modeled in terms of entities and the `data` package handles this. For convenience, there is an example class - [LoginData.java](src/test/java/io/github/tahanima/data/login/LoginData.java) to demonstrate the usage. 
 
 ### Driver
-The project uses Selenium WebDriver to automate user workflows for web-based applications as part of automated testing. The [driver](src/main/java/io/github/tahanima/driver) package contains all the necessary initialization logic for WebDriver.
+The project uses Selenium WebDriver to automate user workflows for web-based applications as part of automated testing. The [driver](src/test/java/io/github/tahanima/driver) package contains all the necessary initialization logic for WebDriver.
 
 ### Page
-The project uses Page Object Model to capture all the relevant UI components and functionalities of a web page. The [page](src/main/java/io/github/tahanima/pages) package provides all the classes to achieve this. For convenience, there is an example class - [LoginPage.java](src/main/java/io/github/tahanima/pages/login/LoginPage.java) to demonstrate the usage.
+The project uses Page Object Model to capture all the relevant UI components and functionalities of a web page. The [pages](src/test/java/io/github/tahanima/pages) package provides all the classes to achieve this. For convenience, there is an example class - [LoginPage.java](src/test/java/io/github/tahanima/pages/login/LoginPage.java) to demonstrate the usage.
 
 ### Report
-The project uses *Extent Reports* to provide test reporting functionalities. The [report](src/main/java/io/github/tahanima/report) package contains the relevant class.
+The project uses *Extent Reports* to provide test reporting functionalities.
 
 ### Test
-[LoginTest.java](src/test/java/io/github/tahanima/login/LoginTest.java) demonstrates an example test script.
+[LoginE2ETest.java](src/test/java/io/github/tahanima/e2e/login/LoginE2ETest.java) demonstrates an example test script.
 
 ### Workflow
 The project uses GitHub Actions to run the selenium tests when an update is made to the `main` branch of the repo in GitHub. 
