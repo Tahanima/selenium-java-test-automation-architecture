@@ -36,7 +36,7 @@ The project uses the following:
 The project is structured as follows:
 
 ```bash
-📦 selenium-test-automation-boilerplate  
+📦 selenium-java-test-automation-architecture   
 ├─ .github  
 │  └─ workflows  
 │     └─ test-execution.yml  
