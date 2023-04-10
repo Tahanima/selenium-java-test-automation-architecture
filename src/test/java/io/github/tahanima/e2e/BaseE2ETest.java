@@ -5,7 +5,7 @@ import static io.github.tahanima.config.ConfigurationManager.config;
 import io.github.tahanima.page.BasePage;
 import io.github.tahanima.page.BasePageFactory;
 import io.github.tahanima.util.DriverManager;
-import io.github.tahanima.utils.TestListener;
+import io.github.tahanima.util.TestListener;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;

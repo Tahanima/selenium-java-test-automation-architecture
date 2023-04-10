@@ -92,7 +92,7 @@ The project is structured as follows:
       │           │  ├─ BaseE2ETest.java  
       │           │  └─ login  
       │           │     └─ LoginE2ETest.java  
-      │           └─ utils  
+      │           └─ util  
       │              ├─ DataProviderUtils.java  
       │              └─ TestListener.java  
       └─ resources  

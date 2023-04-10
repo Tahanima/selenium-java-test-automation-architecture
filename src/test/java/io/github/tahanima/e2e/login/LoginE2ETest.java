@@ -1,6 +1,6 @@
 package io.github.tahanima.e2e.login;
 
-import static io.github.tahanima.utils.DataProviderUtils.processCsv;
+import static io.github.tahanima.util.DataProviderUtils.processCsv;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

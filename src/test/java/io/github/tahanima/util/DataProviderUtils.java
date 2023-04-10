@@ -1,4 +1,4 @@
-package io.github.tahanima.utils;
+package io.github.tahanima.util;
 
 import com.univocity.parsers.csv.CsvParserSettings;
 import com.univocity.parsers.csv.CsvRoutines;

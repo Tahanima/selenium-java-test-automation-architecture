@@ -1,4 +1,4 @@
-package io.github.tahanima.utils;
+package io.github.tahanima.util;
 
 import static io.github.tahanima.config.ConfigurationManager.config;
 
