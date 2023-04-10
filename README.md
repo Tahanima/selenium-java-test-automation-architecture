@@ -13,7 +13,7 @@ git clone https://github.com/[your_username]/selenium-test-automation-boilerplat
 ```
 3. Import the project in [IntelliJ IDEA](https://www.jetbrains.com/idea/download/).
 4. Make your desired changes.
-5. Use IntelliJ IDEA to run your desired tests. Alternatively, you can use the terminal to run the tests, for example `./gradlew test -Dbrowser=firefox -Dheadless=false` to run all the tests using the firefox browser in headed mode.
+5. Use IntelliJ IDEA to run your desired tests. Alternatively, you can use the terminal to run the tests, for example `./gradlew test -Dbrowser=firefox -Dheadless=false` to run all the tests using the firefox browser in headful mode.
 
 ## Languages and Frameworks
 
@@ -36,90 +36,67 @@ The project uses the following:
 The project is structured as follows:
 
 ```bash
-📦 selenium-test-automation-boilerplate
-├─ .github
-│  └─ workflows
-│     └─ test-execution.yml
-├─ .gitignore
-├─ README.md
-├─ build.gradle
-├─ gradle
-│  └─ wrapper
-│     ├─ gradle-wrapper.jar
-│     └─ gradle-wrapper.properties
-├─ gradlew
-├─ gradlew.bat
-├─ script
-│  └─ install_chrome.sh
-├─ settings.gradle
-└─ src
-   └─ test
-      ├─ java
-      │  └─ io
-      │     └─ github
-      │        └─ tahanima
-      │           ├─ config
-      │           │  ├─ Configuration.java
-      │           │  ├─ ConfigurationManager.java
-      │           │  └─ package-info.java
-      │           ├─ data
-      │           │  ├─ BaseData.java
-      │           │  ├─ login
-      │           │  │  └─ LoginData.java
-      │           │  └─ package-info.java
-      │           ├─ driver
-      │           │  ├─ BrowserFactory.java
-      │           │  ├─ DriverManager.java
-      │           │  └─ package-info.java
-      │           ├─ e2e
-      │           │  ├─ BaseE2ETest.java
-      │           │  └─ login
-      │           │     └─ LoginE2ETest.java
-      │           ├─ pages
-      │           │  ├─ BasePage.java
-      │           │  ├─ BasePageFactory.java
-      │           │  ├─ login
-      │           │  │  └─ LoginPage.java
-      │           │  ├─ package-info.java
-      │           │  └─ product
-      │           │     └─ ProductsPage.java
-      │           └─ utils
-      │              ├─ DataProviderUtil.java
-      │              ├─ ExtentReportManager.java
-      │              └─ TestListener.java
-      └─ resources
-         ├─ config.properties
-         └─ testData
-            └─ login
-               └─ login.csv
+📦 selenium-test-automation-boilerplate  
+├─ .github  
+│  └─ workflows  
+│     └─ test-execution.yml  
+├─ .gitignore  
+├─ LICENSE  
+├─ README.md  
+├─ build.gradle  
+├─ gradle  
+│  └─ wrapper  
+│     ├─ gradle-wrapper.jar  
+│     └─ gradle-wrapper.properties  
+├─ gradlew  
+├─ gradlew.bat  
+├─ script  
+│  └─ install_chrome.sh  
+├─ settings.gradle  
+└─ src  
+   ├─ main  
+   │  ├─ java  
+   │  │  └─ io  
+   │  │     └─ github  
+   │  │        └─ tahanima  
+   │  │           ├─ config  
+   │  │           │  ├─ Configuration.java  
+   │  │           │  ├─ ConfigurationManager.java  
+   │  │           │  └─ package-info.java  
+   │  │           ├─ data  
+   │  │           │  ├─ BaseTestData.java  
+   │  │           │  ├─ login  
+   │  │           │  │  └─ LoginTestData.java  
+   │  │           │  └─ package-info.java  
+   │  │           ├─ page  
+   │  │           │  ├─ BasePage.java  
+   │  │           │  ├─ BasePageFactory.java  
+   │  │           │  ├─ login   
+   │  │           │  │  └─ LoginPage.java  
+   │  │           │  ├─ package-info.java  
+   │  │           │  └─ product  
+   │  │           │     └─ ProductsPage.java  
+   │  │           ├─ report  
+   │  │           │  └─ ExtentReportManager.java  
+   │  │           └─ util  
+   │  │              ├─ BrowserFactory.java  
+   │  │              └─ DriverManager.java  
+   │  └─ resources  
+   │     └─ config.properties  
+   └─ test  
+      ├─ java  
+      │  └─ io  
+      │     └─ github  
+      │        └─ tahanima  
+      │           ├─ e2e  
+      │           │  ├─ BaseE2ETest.java  
+      │           │  └─ login  
+      │           │     └─ LoginE2ETest.java  
+      │           └─ utils  
+      │              ├─ DataProviderUtils.java  
+      │              └─ TestListener.java  
+      └─ resources  
+         └─ testdata  
+            └─ login  
+               └─ login.csv  
 ```
-
-## Project Components
-- [Config](#config)
-- [Data](#data)
-- [Driver](#driver)
-- [Page](#page)
-- [Report](#report)
-- [Test](#test)
-- [Workflow](#workflow)
-
-### Config
-The project has some global properties, for example, browser and base url. The [config](src/test/java/io/github/tahanima/config) package holds all the relevant classes to handle these global properties.
-
-### Data
-The project reads test data from csv files. The test data properties are modeled in terms of entities and the `data` package handles this. For convenience, there is an example class - [LoginData.java](src/test/java/io/github/tahanima/data/login/LoginData.java) to demonstrate the usage. 
-
-### Driver
-The project uses Selenium WebDriver to automate user workflows for web-based applications as part of automated testing. The [driver](src/test/java/io/github/tahanima/driver) package contains all the necessary initialization logic for WebDriver.
-
-### Page
-The project uses Page Object Model to capture all the relevant UI components and functionalities of a web page. The [pages](src/test/java/io/github/tahanima/pages) package provides all the classes to achieve this. For convenience, there is an example class - [LoginPage.java](src/test/java/io/github/tahanima/pages/login/LoginPage.java) to demonstrate the usage.
-
-### Report
-The project uses *Extent Reports* to provide test reporting functionalities.
-
-### Test
-[LoginE2ETest.java](src/test/java/io/github/tahanima/e2e/login/LoginE2ETest.java) demonstrates an example test script.
-
-### Workflow
-The project uses GitHub Actions to run the selenium tests when an update is made to the `main` branch of the repo in GitHub. 
