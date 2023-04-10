@@ -6,10 +6,10 @@ Ready-to-use UI Test Automation Architecture using Java and Selenium WebDriver.
 
 In order to use the framework:
 
-1. [Fork](https://github.com/Tahanima/selenium-test-automation-boilerplate/fork) the repository.
+1. [Fork](https://github.com/Tahanima/selenium-java-test-automation-architecture/fork) the repository.
 2. Clone, i.e, download your copy of the repository to your local machine using
 ```
-git clone https://github.com/[your_username]/selenium-test-automation-boilerplate.git
+git clone https://github.com/[your_username]/selenium-java-test-automation-architecture.git
 ```
 3. Import the project in [IntelliJ IDEA](https://www.jetbrains.com/idea/download/).
 4. Make your desired changes.
