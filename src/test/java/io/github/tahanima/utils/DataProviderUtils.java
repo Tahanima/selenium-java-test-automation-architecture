@@ -2,7 +2,8 @@ package io.github.tahanima.utils;
 
 import com.univocity.parsers.csv.CsvParserSettings;
 import com.univocity.parsers.csv.CsvRoutines;
-import io.github.tahanima.data.BaseData;
+
+import io.github.tahanima.data.BaseTestData;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,15 +12,13 @@ import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-import static io.github.tahanima.config.ConfigurationManager.configuration;
-
 /**
  * @author tahanima
  */
-public final class DataProviderUtil {
-    private DataProviderUtil() {}
+public final class DataProviderUtils {
+    private DataProviderUtils() {}
 
-    private static Object[][] convert(final ArrayList<ArrayList<? extends BaseData>> data) {
+    private static Object[][] convertToArray(ArrayList<ArrayList<? extends BaseTestData>> data) {
         int noOfRows = data.size();
         Object[][] dataArray = new Object[noOfRows][1];
 
@@ -31,28 +30,29 @@ public final class DataProviderUtil {
     }
 
     public static Object[][] processCsv(
-            final Class<? extends BaseData> clazz, String csvFilePath, final String testCaseId) {
+            Class<? extends BaseTestData> clazz, String csvFilePath, String testCaseId) {
         CsvParserSettings parserSettings = new CsvParserSettings();
+
         parserSettings.getFormat().setLineSeparator("\n");
+
         CsvRoutines routines = new CsvRoutines(parserSettings);
-        csvFilePath = configuration().baseTestDataPath() + csvFilePath;
 
         try (Reader inputReader =
-                new InputStreamReader(new FileInputStream(csvFilePath), StandardCharsets.UTF_8)) {
-            ArrayList<ArrayList<? extends BaseData>> parsedData = new ArrayList<>();
+                     new InputStreamReader(new FileInputStream(csvFilePath), StandardCharsets.UTF_8)) {
+            ArrayList<ArrayList<? extends BaseTestData>> testData = new ArrayList<>();
 
-            for (BaseData baseData : routines.iterate(clazz, inputReader)) {
-                if (baseData.getTestCaseId().equals(testCaseId)) {
-                    parsedData.add(
+            for (BaseTestData data : routines.iterate(clazz, inputReader)) {
+                if (data.getTestCaseId().equals(testCaseId)) {
+                    testData.add(
                             new ArrayList<>() {
                                 {
-                                    add(baseData);
+                                    add(data);
                                 }
                             });
                 }
             }
 
-            return convert(parsedData);
+            return convertToArray(testData);
         } catch (IOException e) {
             e.printStackTrace();
         }

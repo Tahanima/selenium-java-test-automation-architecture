@@ -1,9 +1,14 @@
 package io.github.tahanima.e2e.login;
 
+import static io.github.tahanima.utils.DataProviderUtils.processCsv;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+import io.github.tahanima.data.login.LoginTestData;
 import io.github.tahanima.e2e.BaseE2ETest;
-import io.github.tahanima.data.login.LoginData;
-import io.github.tahanima.pages.login.LoginPage;
-import io.github.tahanima.pages.product.ProductsPage;
+import io.github.tahanima.page.login.LoginPage;
+import io.github.tahanima.page.product.ProductsPage;
+
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -11,9 +16,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
-
-import static io.github.tahanima.utils.DataProviderUtil.processCsv;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 /**
  * @author tahanima
@@ -23,10 +25,10 @@ public class LoginE2ETest extends BaseE2ETest {
     private LoginPage loginPage;
 
     @DataProvider(name = "loginData")
-    public static Object[][] getLoginData(final Method testMethod) {
+    public Object[][] getLoginData(final Method testMethod) {
         String testCaseId = testMethod.getAnnotation(Test.class).testName();
 
-        return processCsv(LoginData.class, FILE_PATH, testCaseId);
+        return processCsv(LoginTestData.class, getTestDataFilePath(FILE_PATH), testCaseId);
     }
 
     @Override
@@ -34,12 +36,17 @@ public class LoginE2ETest extends BaseE2ETest {
         loginPage = createInstance(LoginPage.class);
     }
 
-    @AfterMethod
-    public void captureScreenshot(ITestResult result) {
+    @AfterMethod(alwaysRun = true)
+    public void captureScreenshotOnFailure(ITestResult result) {
         ITestNGMethod method = result.getMethod();
 
         if (ITestResult.FAILURE == result.getStatus()) {
-            loginPage.captureScreenshot(method.getMethodName());
+            loginPage.captureScreenshot(
+                    String.format(
+                            "%s_%s_%s",
+                            method.getRealClass().getSimpleName(),
+                            method.getMethodName(),
+                            method.getParameterInvocationCount()));
         }
     }
 
@@ -47,28 +54,28 @@ public class LoginE2ETest extends BaseE2ETest {
             testName = "TC-1",
             dataProvider = "loginData",
             groups = {"smoke", "regression"})
-    public void testCorrectUserNameAndCorrectPassword(final LoginData loginDto) {
+    public void testCorrectUserNameAndCorrectPassword(final LoginTestData loginDto) {
         loginPage
-                .goTo()
-                .enterUsername(loginDto.getUserName())
-                .enterPassword(loginDto.getPassword())
-                .clickLogin();
+                .navigateToUrl()
+                .fillUsernameInTextBox(loginDto.getUserName())
+                .fillPasswordInTextBox(loginDto.getPassword())
+                .clickOnLoginButton();
 
         ProductsPage productsPage = createInstance(ProductsPage.class);
 
-        assertThat(productsPage.getTitle()).isEqualTo("PRODUCTS");
+        assertThat(productsPage.getTitle()).isEqualTo("Products");
     }
 
     @Test(
             testName = "TC-2",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testIncorrectUserNameAndCorrectPassword(final LoginData loginDto) {
+    public void testIncorrectUserNameAndCorrectPassword(final LoginTestData loginDto) {
         loginPage
-                .goTo()
-                .enterUsername(loginDto.getUserName())
-                .enterPassword(loginDto.getPassword())
-                .clickLogin();
+                .navigateToUrl()
+                .fillUsernameInTextBox(loginDto.getUserName())
+                .fillPasswordInTextBox(loginDto.getPassword())
+                .clickOnLoginButton();
 
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
@@ -77,12 +84,12 @@ public class LoginE2ETest extends BaseE2ETest {
             testName = "TC-3",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testCorrectUserNameAndIncorrectPassword(final LoginData loginDto) {
+    public void testCorrectUserNameAndIncorrectPassword(final LoginTestData loginDto) {
         loginPage
-                .goTo()
-                .enterUsername(loginDto.getUserName())
-                .enterPassword(loginDto.getPassword())
-                .clickLogin();
+                .navigateToUrl()
+                .fillUsernameInTextBox(loginDto.getUserName())
+                .fillPasswordInTextBox(loginDto.getPassword())
+                .clickOnLoginButton();
 
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
@@ -91,12 +98,12 @@ public class LoginE2ETest extends BaseE2ETest {
             testName = "TC-4",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testIncorrectUserNameAndIncorrectPassword(final LoginData loginDto) {
+    public void testIncorrectUserNameAndIncorrectPassword(final LoginTestData loginDto) {
         loginPage
-                .goTo()
-                .enterUsername(loginDto.getUserName())
-                .enterPassword(loginDto.getPassword())
-                .clickLogin();
+                .navigateToUrl()
+                .fillUsernameInTextBox(loginDto.getUserName())
+                .fillPasswordInTextBox(loginDto.getPassword())
+                .clickOnLoginButton();
 
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
@@ -105,8 +112,11 @@ public class LoginE2ETest extends BaseE2ETest {
             testName = "TC-5",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testBlankUserName(final LoginData loginDto) {
-        loginPage.goTo().enterPassword(loginDto.getPassword()).clickLogin();
+    public void testBlankUserName(final LoginTestData loginDto) {
+        loginPage
+                .navigateToUrl()
+                .fillPasswordInTextBox(loginDto.getPassword())
+                .clickOnLoginButton();
 
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
@@ -115,8 +125,11 @@ public class LoginE2ETest extends BaseE2ETest {
             testName = "TC-6",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testBlankPassword(final LoginData loginDto) {
-        loginPage.goTo().enterUsername(loginDto.getUserName()).clickLogin();
+    public void testBlankPassword(final LoginTestData loginDto) {
+        loginPage
+                .navigateToUrl()
+                .fillUsernameInTextBox(loginDto.getUserName())
+                .clickOnLoginButton();
 
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }
@@ -125,12 +138,12 @@ public class LoginE2ETest extends BaseE2ETest {
             testName = "TC-7",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testLockedOutUser(final LoginData loginDto) {
+    public void testLockedOutUser(final LoginTestData loginDto) {
         loginPage
-                .goTo()
-                .enterUsername(loginDto.getUserName())
-                .enterPassword(loginDto.getPassword())
-                .clickLogin();
+                .navigateToUrl()
+                .fillUsernameInTextBox(loginDto.getUserName())
+                .fillPasswordInTextBox(loginDto.getPassword())
+                .clickOnLoginButton();
 
         assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
     }

@@ -1,6 +1,11 @@
-package io.github.tahanima.driver;
+package io.github.tahanima.util;
+
+import static io.github.tahanima.config.ConfigurationManager.config;
+
+import static java.lang.Boolean.TRUE;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,9 +15,6 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
 import java.time.Duration;
-
-import static io.github.tahanima.config.ConfigurationManager.configuration;
-import static java.lang.Boolean.TRUE;
 
 /**
  * This enum handles the initialization of browser drivers.
@@ -32,7 +34,7 @@ public enum BrowserFactory {
 
             driver.manage()
                     .timeouts()
-                    .implicitlyWait(Duration.ofSeconds(configuration().timeout()));
+                    .implicitlyWait(Duration.ofSeconds(config().timeout()));
             driver.manage().window().maximize();
 
             return driver;
@@ -42,7 +44,10 @@ public enum BrowserFactory {
             ChromeOptions options = new ChromeOptions();
 
             options.setAcceptInsecureCerts(true);
-            options.setHeadless(configuration().headless());
+
+            if (config().headless()) {
+                options.addArguments("--headless=new");
+            }
 
             return options;
         }
@@ -57,7 +62,7 @@ public enum BrowserFactory {
 
             driver.manage()
                     .timeouts()
-                    .implicitlyWait(Duration.ofSeconds(configuration().timeout()));
+                    .implicitlyWait(Duration.ofSeconds(config().timeout()));
             driver.manage().window().maximize();
 
             return driver;
@@ -67,7 +72,10 @@ public enum BrowserFactory {
             FirefoxOptions options = new FirefoxOptions();
 
             options.setAcceptInsecureCerts(true);
-            options.setHeadless(configuration().headless());
+
+            if (config().headless()) {
+                options.addArguments("--headless=new");
+            }
 
             return options;
         }
@@ -82,7 +90,7 @@ public enum BrowserFactory {
 
             driver.manage()
                     .timeouts()
-                    .implicitlyWait(Duration.ofSeconds(configuration().timeout()));
+                    .implicitlyWait(Duration.ofSeconds(config().timeout()));
             driver.manage().window().maximize();
 
             return driver;
@@ -93,11 +101,11 @@ public enum BrowserFactory {
 
             options.setAcceptInsecureCerts(true);
 
-            if (TRUE.equals(configuration().headless())) {
+            if (TRUE.equals(config().headless())) {
                 throw new IllegalStateException(
                         String.format(
                                 "Headless not supported for %s browser",
-                                configuration().browser()));
+                                config().browser()));
             }
 
             return options;

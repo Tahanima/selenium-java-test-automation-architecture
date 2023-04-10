@@ -1,8 +1,8 @@
-package io.github.tahanima.driver;
+package io.github.tahanima.util;
+
+import static io.github.tahanima.config.ConfigurationManager.config;
 
 import org.openqa.selenium.WebDriver;
-
-import static io.github.tahanima.config.ConfigurationManager.configuration;
 
 /**
  * This class provides a singleton instance of WebDriver.
@@ -20,7 +20,7 @@ public final class DriverManager {
     public static WebDriver createDriver() {
         if (driver == null) {
             driver =
-                    BrowserFactory.valueOf(configuration().browser().toUpperCase())
+                    BrowserFactory.valueOf(config().browser().toUpperCase())
                             .initializeDriver();
         }
 

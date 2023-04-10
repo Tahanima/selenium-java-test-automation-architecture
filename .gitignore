@@ -15,3 +15,5 @@ out
 *.iws
 *.iml
 atlassian-ide-plugin.xml
+
+testoutput

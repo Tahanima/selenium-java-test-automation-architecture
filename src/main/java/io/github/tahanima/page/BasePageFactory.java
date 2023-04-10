@@ -1,4 +1,4 @@
-package io.github.tahanima.pages;
+package io.github.tahanima.page;
 
 import org.openqa.selenium.WebDriver;
 
