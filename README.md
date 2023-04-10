@@ -1,4 +1,4 @@
-# Selenium Test Automation Boilerplate
+# Selenium Java Test Automation Architecture
 
 Ready-to-use UI Test Automation Architecture using Java and Selenium WebDriver. 
 
