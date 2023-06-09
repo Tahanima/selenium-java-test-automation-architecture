@@ -12,7 +12,7 @@ import lombok.ToString;
  */
 @Getter
 @ToString
-public class BaseTestData {
+public class BaseData {
     @Parsed(field = "Test Case ID", defaultNullRead = "")
     private String testCaseId;
 

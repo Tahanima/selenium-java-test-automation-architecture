@@ -4,7 +4,7 @@ import static io.github.tahanima.util.DataProviderUtils.processCsv;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import io.github.tahanima.data.login.LoginTestData;
+import io.github.tahanima.data.login.LoginData;
 import io.github.tahanima.e2e.BaseE2ETest;
 import io.github.tahanima.page.login.LoginPage;
 import io.github.tahanima.page.product.ProductsPage;
@@ -28,7 +28,7 @@ public class LoginE2ETest extends BaseE2ETest {
     public Object[][] getLoginData(final Method testMethod) {
         String testCaseId = testMethod.getAnnotation(Test.class).testName();
 
-        return processCsv(LoginTestData.class, getTestDataFilePath(FILE_PATH), testCaseId);
+        return processCsv(LoginData.class, getTestDataFilePath(FILE_PATH), testCaseId);
     }
 
     @Override
@@ -54,12 +54,12 @@ public class LoginE2ETest extends BaseE2ETest {
             testName = "TC-1",
             dataProvider = "loginData",
             groups = {"smoke", "regression"})
-    public void testCorrectUserNameAndCorrectPassword(final LoginTestData loginDto) {
+    public void testCorrectUserNameAndCorrectPassword(final LoginData data) {
         loginPage
-                .navigateToUrl()
-                .fillUsernameInTextBox(loginDto.getUserName())
-                .fillPasswordInTextBox(loginDto.getPassword())
-                .clickOnLoginButton();
+                .open()
+                .typeUsername(data.getUserName())
+                .typePassword(data.getPassword())
+                .clickOnLogin();
 
         ProductsPage productsPage = createInstance(ProductsPage.class);
 
@@ -70,81 +70,75 @@ public class LoginE2ETest extends BaseE2ETest {
             testName = "TC-2",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testIncorrectUserNameAndCorrectPassword(final LoginTestData loginDto) {
+    public void testIncorrectUserNameAndCorrectPassword(final LoginData data) {
         loginPage
-                .navigateToUrl()
-                .fillUsernameInTextBox(loginDto.getUserName())
-                .fillPasswordInTextBox(loginDto.getPassword())
-                .clickOnLoginButton();
+                .open()
+                .typeUsername(data.getUserName())
+                .typePassword(data.getPassword())
+                .clickOnLogin();
 
-        assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
+        assertThat(loginPage.getErrorMessage()).isEqualTo(data.getErrorMessage());
     }
 
     @Test(
             testName = "TC-3",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testCorrectUserNameAndIncorrectPassword(final LoginTestData loginDto) {
+    public void testCorrectUserNameAndIncorrectPassword(final LoginData data) {
         loginPage
-                .navigateToUrl()
-                .fillUsernameInTextBox(loginDto.getUserName())
-                .fillPasswordInTextBox(loginDto.getPassword())
-                .clickOnLoginButton();
+                .open()
+                .typeUsername(data.getUserName())
+                .typePassword(data.getPassword())
+                .clickOnLogin();
 
-        assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
+        assertThat(loginPage.getErrorMessage()).isEqualTo(data.getErrorMessage());
     }
 
     @Test(
             testName = "TC-4",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testIncorrectUserNameAndIncorrectPassword(final LoginTestData loginDto) {
+    public void testIncorrectUserNameAndIncorrectPassword(final LoginData data) {
         loginPage
-                .navigateToUrl()
-                .fillUsernameInTextBox(loginDto.getUserName())
-                .fillPasswordInTextBox(loginDto.getPassword())
-                .clickOnLoginButton();
+                .open()
+                .typeUsername(data.getUserName())
+                .typePassword(data.getPassword())
+                .clickOnLogin();
 
-        assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
+        assertThat(loginPage.getErrorMessage()).isEqualTo(data.getErrorMessage());
     }
 
     @Test(
             testName = "TC-5",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testBlankUserName(final LoginTestData loginDto) {
-        loginPage
-                .navigateToUrl()
-                .fillPasswordInTextBox(loginDto.getPassword())
-                .clickOnLoginButton();
+    public void testBlankUserName(final LoginData data) {
+        loginPage.open().typePassword(data.getPassword()).clickOnLogin();
 
-        assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
+        assertThat(loginPage.getErrorMessage()).isEqualTo(data.getErrorMessage());
     }
 
     @Test(
             testName = "TC-6",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testBlankPassword(final LoginTestData loginDto) {
-        loginPage
-                .navigateToUrl()
-                .fillUsernameInTextBox(loginDto.getUserName())
-                .clickOnLoginButton();
+    public void testBlankPassword(final LoginData data) {
+        loginPage.open().typeUsername(data.getUserName()).clickOnLogin();
 
-        assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
+        assertThat(loginPage.getErrorMessage()).isEqualTo(data.getErrorMessage());
     }
 
     @Test(
             testName = "TC-7",
             dataProvider = "loginData",
             groups = {"regression"})
-    public void testLockedOutUser(final LoginTestData loginDto) {
+    public void testLockedOutUser(final LoginData data) {
         loginPage
-                .navigateToUrl()
-                .fillUsernameInTextBox(loginDto.getUserName())
-                .fillPasswordInTextBox(loginDto.getPassword())
-                .clickOnLoginButton();
+                .open()
+                .typeUsername(data.getUserName())
+                .typePassword(data.getPassword())
+                .clickOnLogin();
 
-        assertThat(loginPage.getErrorMessage()).isEqualTo(loginDto.getErrorMessage());
+        assertThat(loginPage.getErrorMessage()).isEqualTo(data.getErrorMessage());
     }
 }

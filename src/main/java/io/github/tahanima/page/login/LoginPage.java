@@ -23,20 +23,20 @@ public final class LoginPage extends BasePage {
     @FindBy(id = "login-button")
     private WebElement btnLogin;
 
-    public LoginPage navigateToUrl() {
+    public LoginPage open() {
         driver.get(config().baseUrl());
 
         return this;
     }
 
-    public LoginPage fillUsernameInTextBox(final String username) {
+    public LoginPage typeUsername(final String username) {
         txtUsername.clear();
         txtUsername.sendKeys(username);
 
         return this;
     }
 
-    public LoginPage fillPasswordInTextBox(final String password) {
+    public LoginPage typePassword(final String password) {
         txtPassword.clear();
         txtPassword.sendKeys(password);
 
@@ -49,7 +49,7 @@ public final class LoginPage extends BasePage {
                 .getText();
     }
 
-    public void clickOnLoginButton() {
+    public void clickOnLogin() {
         btnLogin.click();
     }
 }
