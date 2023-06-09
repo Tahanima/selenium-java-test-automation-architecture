@@ -36,67 +36,68 @@ The project uses the following:
 The project is structured as follows:
 
 ```bash
-📦 selenium-java-test-automation-architecture   
-├─ .github  
-│  └─ workflows  
-│     └─ test-execution.yml  
-├─ .gitignore  
-├─ LICENSE  
-├─ README.md  
-├─ build.gradle  
-├─ gradle  
-│  └─ wrapper  
-│     ├─ gradle-wrapper.jar  
-│     └─ gradle-wrapper.properties  
-├─ gradlew  
-├─ gradlew.bat  
-├─ script  
-│  └─ install_chrome.sh  
-├─ settings.gradle  
-└─ src  
-   ├─ main  
-   │  ├─ java  
-   │  │  └─ io  
-   │  │     └─ github  
-   │  │        └─ tahanima  
-   │  │           ├─ config  
-   │  │           │  ├─ Configuration.java  
-   │  │           │  ├─ ConfigurationManager.java  
-   │  │           │  └─ package-info.java  
-   │  │           ├─ data  
-   │  │           │  ├─ BaseTestData.java  
-   │  │           │  ├─ login  
-   │  │           │  │  └─ LoginTestData.java  
-   │  │           │  └─ package-info.java  
-   │  │           ├─ page  
-   │  │           │  ├─ BasePage.java  
-   │  │           │  ├─ BasePageFactory.java  
-   │  │           │  ├─ login   
-   │  │           │  │  └─ LoginPage.java  
-   │  │           │  ├─ package-info.java  
-   │  │           │  └─ product  
-   │  │           │     └─ ProductsPage.java  
-   │  │           ├─ report  
-   │  │           │  └─ ExtentReportManager.java  
-   │  │           └─ util  
-   │  │              ├─ BrowserFactory.java  
-   │  │              └─ DriverManager.java  
-   │  └─ resources  
-   │     └─ config.properties  
-   └─ test  
-      ├─ java  
-      │  └─ io  
-      │     └─ github  
-      │        └─ tahanima  
-      │           ├─ e2e  
-      │           │  ├─ BaseE2ETest.java  
-      │           │  └─ login  
-      │           │     └─ LoginE2ETest.java  
-      │           └─ util  
-      │              ├─ DataProviderUtils.java  
-      │              └─ TestListener.java  
-      └─ resources  
-         └─ testdata  
-            └─ login  
-               └─ login.csv  
+📦 selenium-java-test-automation-architecture
+├─ .github
+│  ├─ FUNDING.yml
+│  └─ workflows
+│     └─ test-execution.yml
+├─ .gitignore
+├─ LICENSE
+├─ README.md
+├─ build.gradle
+├─ gradle
+│  └─ wrapper
+│     ├─ gradle-wrapper.jar
+│     └─ gradle-wrapper.properties
+├─ gradlew
+├─ gradlew.bat
+├─ script
+│  └─ install_chrome.sh
+├─ settings.gradle
+└─ src
+   ├─ main
+   │  ├─ java
+   │  │  └─ io
+   │  │     └─ github
+   │  │        └─ tahanima
+   │  │           ├─ config
+   │  │           │  ├─ Configuration.java
+   │  │           │  ├─ ConfigurationManager.java
+   │  │           │  └─ package-info.java
+   │  │           ├─ data
+   │  │           │  ├─ BaseData.java
+   │  │           │  ├─ login
+   │  │           │  │  └─ LoginData.java
+   │  │           │  └─ package-info.java
+   │  │           ├─ page
+   │  │           │  ├─ BasePage.java
+   │  │           │  ├─ BasePageFactory.java
+   │  │           │  ├─ login
+   │  │           │  │  └─ LoginPage.java
+   │  │           │  ├─ package-info.java
+   │  │           │  └─ product
+   │  │           │     └─ ProductsPage.java
+   │  │           ├─ report
+   │  │           │  └─ ExtentReportManager.java
+   │  │           └─ util
+   │  │              ├─ BrowserFactory.java
+   │  │              └─ DriverManager.java
+   │  └─ resources
+   │     └─ config.properties
+   └─ test
+      ├─ java
+      │  └─ io
+      │     └─ github
+      │        └─ tahanima
+      │           ├─ e2e
+      │           │  ├─ BaseE2ETest.java
+      │           │  └─ login
+      │           │     └─ LoginE2ETest.java
+      │           └─ util
+      │              ├─ DataProviderUtils.java
+      │              └─ TestListener.java
+      └─ resources
+         └─ testdata
+            └─ login
+               └─ login.csv
 ```
