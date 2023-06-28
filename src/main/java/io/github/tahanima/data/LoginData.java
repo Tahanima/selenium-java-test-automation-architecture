@@ -1,22 +1,19 @@
-package io.github.tahanima.data.login;
+package io.github.tahanima.data;
 
 import com.univocity.parsers.annotations.Parsed;
-
-import io.github.tahanima.data.BaseData;
 
 import lombok.Getter;
 import lombok.ToString;
 
 /**
- * This class captures all the test data properties required for the login page.
- *
  * @author tahanima
  */
 @Getter
 @ToString(callSuper = true)
 public class LoginData extends BaseData {
-    @Parsed(field = "User Name", defaultNullRead = "")
-    private String userName;
+
+    @Parsed(field = "Username", defaultNullRead = "")
+    private String username;
 
     @Parsed(field = "Password", defaultNullRead = "")
     private String password;

@@ -15,8 +15,9 @@ import java.util.ArrayList;
 /**
  * @author tahanima
  */
-public final class DataProviderUtils {
-    private DataProviderUtils() {}
+public final class DataProviderUtil {
+
+    private DataProviderUtil() {}
 
     private static Object[][] toArray(ArrayList<ArrayList<? extends BaseData>> data) {
         int noOfRows = data.size();
@@ -29,7 +30,7 @@ public final class DataProviderUtils {
         return dataArray;
     }
 
-    public static Object[][] processCsv(Class<? extends BaseData> clazz, String file, String id) {
+    public static Object[][] processCsv(Class<? extends BaseData> clazz, String fileName, String id) {
         CsvParserSettings settings = new CsvParserSettings();
 
         settings.getFormat().setLineSeparator("\n");
@@ -37,7 +38,7 @@ public final class DataProviderUtils {
         CsvRoutines routines = new CsvRoutines(settings);
 
         try (Reader reader =
-                new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8)) {
+                new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8)) {
             ArrayList<ArrayList<? extends BaseData>> testData = new ArrayList<>();
 
             routines.iterate(clazz, reader)

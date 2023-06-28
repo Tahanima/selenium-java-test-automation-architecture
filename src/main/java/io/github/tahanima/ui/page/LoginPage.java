@@ -1,19 +1,18 @@
-package io.github.tahanima.page.login;
+package io.github.tahanima.ui.page;
 
 import static io.github.tahanima.config.ConfigurationManager.config;
 
-import io.github.tahanima.page.BasePage;
+import io.github.tahanima.factory.BasePageFactory;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * This class captures the relevant UI components and functionalities of the login page.
- *
  * @author tahanima
  */
 public final class LoginPage extends BasePage {
+
     @FindBy(id = "user-name")
     private WebElement txtUsername;
 
@@ -29,16 +28,19 @@ public final class LoginPage extends BasePage {
         return this;
     }
 
+    private void clearAndType(WebElement elem, String text) {
+        elem.clear();
+        elem.sendKeys(text);
+    }
+
     public LoginPage typeUsername(final String username) {
-        txtUsername.clear();
-        txtUsername.sendKeys(username);
+        clearAndType(txtUsername, username);
 
         return this;
     }
 
     public LoginPage typePassword(final String password) {
-        txtPassword.clear();
-        txtPassword.sendKeys(password);
+        clearAndType(txtPassword, password);
 
         return this;
     }
@@ -49,7 +51,17 @@ public final class LoginPage extends BasePage {
                 .getText();
     }
 
-    public void clickOnLogin() {
+    public ProductsPage clickOnLogin() {
         btnLogin.click();
+
+        return BasePageFactory.createInstance(driver, ProductsPage.class);
+    }
+
+    public ProductsPage loginAs(String username, String password) {
+        open();
+        typeUsername(username);
+        typePassword(password);
+
+        return clickOnLogin();
     }
 }

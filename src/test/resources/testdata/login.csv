@@ -1,0 +1,13 @@
+Test Case ID,Test Case Description,Username,Password,Error Message
+TC-1,Correct username and correct password should redirect to 'Products' page,standard_user,secret_sauce,
+TC-1,Correct username and correct password should redirect to 'Products' page,problem_user,secret_sauce,
+TC-1,Correct username and correct password should redirect to 'Products' page,performance_glitch_user,secret_sauce,
+TC-2,Incorrect username and correct password should produce error message,username,secret_sauce,Epic sadface: Username and password do not match any user in this service
+TC-2,Correct username and incorrect password should produce error message,standard_user,password,Epic sadface: Username and password do not match any user in this service
+TC-2,Correct username and incorrect password should produce error message,locked_out_user,password,Epic sadface: Username and password do not match any user in this service
+TC-2,Correct username and incorrect password should produce error message,problem_user,password,Epic sadface: Username and password do not match any user in this service
+TC-2,Correct username and incorrect password should produce error message,performance_glitch_user,password,Epic sadface: Username and password do not match any user in this service
+TC-2,Incorrect username and incorrect password should produce error message,demo_username,demo_password,Epic sadface: Username and password do not match any user in this service
+TC-2,Blank username should produce error message,,demo_password,Epic sadface: Username is required
+TC-2,Blank password should produce error message,demo_username,,Epic sadface: Password is required
+TC-2,Should produce error message for locked out user,locked_out_user,secret_sauce,"Epic sadface: Sorry, this user has been locked out."

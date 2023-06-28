@@ -14,6 +14,7 @@ import java.util.Date;
  * @author tahanima
  */
 public final class ExtentReportManager {
+
     private ExtentReportManager() {}
 
     public static ExtentReports createReport() {

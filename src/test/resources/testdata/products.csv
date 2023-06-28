@@ -1,0 +1,2 @@
+Test Case ID,Test Case Description,User Name,Password,URL
+TC-1,Logging out should redirect to login page,standard_user,secret_sauce,https://www.saucedemo.com/

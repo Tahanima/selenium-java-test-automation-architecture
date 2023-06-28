@@ -1,4 +1,4 @@
-package io.github.tahanima.page;
+package io.github.tahanima.ui.page;
 
 import static io.github.tahanima.config.ConfigurationManager.config;
 
@@ -8,17 +8,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * This class defines the basic functionalities of a POM class.
- *
  * @author tahanima
  */
-public class BasePage {
+public abstract class BasePage {
+
     protected WebDriver driver;
 
-    public void initialize(final WebDriver webdriver) {
+    public void initDriverAndElements(final WebDriver webdriver) {
         this.driver = webdriver;
 
         PageFactory.initElements(driver, this);
+    }
+
+    public void initComponents() {}
+
+    public String getUrl() {
+        return driver.getCurrentUrl();
     }
 
     public void captureScreenshot(String fileName) {

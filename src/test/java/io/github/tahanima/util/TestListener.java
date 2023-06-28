@@ -15,11 +15,10 @@ import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 
 /**
- * This class takes care of test report generation.
- *
  * @author tahanima
  */
 public class TestListener implements ITestListener {
+
     private static final ExtentReports REPORT = ExtentReportManager.createReport();
 
     @Override
