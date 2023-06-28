@@ -18,6 +18,7 @@ git clone https://github.com/[your_username]/selenium-java-test-automation-archi
 ## Languages and Frameworks
 
 The project uses the following:
+
 - *[Java 11](https://openjdk.java.net/projects/jdk/11/)* as the programming language.
 - *[Selenium WebDriver](https://www.selenium.dev/)* as the web browser automation framework using the Java binding.
 - *[WebDriverManager](https://bonigarcia.dev/webdrivermanager/)* as the browser driver management library.
@@ -56,34 +57,31 @@ The project is structured as follows:
 ├─ settings.gradle
 └─ src
    ├─ main
-   │  ├─ java
-   │  │  └─ io
-   │  │     └─ github
-   │  │        └─ tahanima
-   │  │           ├─ config
-   │  │           │  ├─ Configuration.java
-   │  │           │  ├─ ConfigurationManager.java
-   │  │           │  └─ package-info.java
-   │  │           ├─ data
-   │  │           │  ├─ BaseData.java
-   │  │           │  ├─ login
-   │  │           │  │  └─ LoginData.java
-   │  │           │  └─ package-info.java
-   │  │           ├─ page
-   │  │           │  ├─ BasePage.java
-   │  │           │  ├─ BasePageFactory.java
-   │  │           │  ├─ login
-   │  │           │  │  └─ LoginPage.java
-   │  │           │  ├─ package-info.java
-   │  │           │  └─ product
-   │  │           │     └─ ProductsPage.java
-   │  │           ├─ report
-   │  │           │  └─ ExtentReportManager.java
-   │  │           └─ util
-   │  │              ├─ BrowserFactory.java
-   │  │              └─ DriverManager.java
-   │  └─ resources
-   │     └─ config.properties
+   │  └─ java
+   │     └─ io
+   │        └─ github
+   │           └─ tahanima
+   │              ├─ config
+   │              │  ├─ Configuration.java
+   │              │  └─ ConfigurationManager.java
+   │              ├─ data
+   │              │  ├─ BaseData.java
+   │              │  ├─ LoginData.java
+   │              │  └─ ProductsData.java
+   │              ├─ factory
+   │              │  ├─ BasePageFactory.java
+   │              │  └─ BrowserFactory.java
+   │              ├─ report
+   │              │  └─ ExtentReportManager.java
+   │              └─ ui
+   │                 ├─ component
+   │                 │  ├─ BaseComponent.java
+   │                 │  ├─ Header.java
+   │                 │  └─ SideNavMenu.java
+   │                 └─ page
+   │                    ├─ BasePage.java
+   │                    ├─ LoginPage.java
+   │                    └─ ProductsPage.java
    └─ test
       ├─ java
       │  └─ io
@@ -91,13 +89,15 @@ The project is structured as follows:
       │        └─ tahanima
       │           ├─ e2e
       │           │  ├─ BaseE2ETest.java
-      │           │  └─ login
-      │           │     └─ LoginE2ETest.java
+      │           │  ├─ LoginE2ETest.java
+      │           │  └─ ProductsE2ETest.java
       │           └─ util
-      │              ├─ DataProviderUtils.java
-      │              └─ TestListener.java
+      │              ├─ DataProviderUtil.java
+      │              ├─ TestListener.java
+      │              └─ TestRetry.java
       └─ resources
+         ├─ config.properties
          └─ testdata
-            └─ login
-               └─ login.csv
+            ├─ login.csv
+            └─ products.csv
 ```
