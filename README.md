@@ -101,3 +101,42 @@ The project is structured as follows:
             ├─ login.csv
             └─ products.csv
 ```
+
+## Basic Usage
+
+- ### Configuration
+  The project uses a [*config.properties*](./src/test/resources/config.properties) file to manage global configurations such as browser type and base url.
+  
+  1. To add a new property, register a new entry in this file.
+      ```
+      key=value
+      ```
+    
+      Then, add a method in the [*Configuration*](./src/main/java/io/github/tahanima/config/Configuration.java) interface in the below format.
+      ```java
+      @Key("key")
+      dataType key();
+      ```
+    
+      For example, let's say I want to add a new property named `context` with the value `dev`. In the `config.properties` file, I'll add:
+      ```
+      context=dev
+      ```
+    
+      In the `Configuration` interface, I'll add:
+      ```java
+      @Key("context")
+      String context();
+      ```
+    
+      To use your newly created property, you need to use the below import statement.
+      ```java
+      import static io.github.tahanima.config.ConfigurationManager.config;
+      ```
+    
+      Then, you can call `config().key()` to retrieve the value of your newly created property. For the example I've provided, I need to call `config().context()`.
+
+  2. You can supply the properties present in the `config.properties` file as system properties in your test via gradle.
+      ```bash
+      ./gradlew test -Dkey1=value1 -Dkey2=value2
+      ```
