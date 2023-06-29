@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * @author tahanima
  */
-public class BaseComponent {
+public abstract class BaseComponent {
 
     protected WebDriver driver;
 
