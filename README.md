@@ -140,3 +140,36 @@ The project is structured as follows:
       ```bash
       ./gradlew test -Dkey1=value1 -Dkey2=value2
       ```
+      
+- ### Test Data
+  The project uses *csv* file to store test data and [*univocity-parsers*](https://github.com/uniVocity/univocity-parsers) to retrieve the data and map it to a Java bean.
+
+  To add configurations for new test data, add a new Java bean in the [*data*](./src/main/java/io/github/tahanima/data) package. For example, let's say I want to add test data for a `User` with the attributes `First Name` and `Last Name`. The code for this is as follows:
+     
+   ```java
+   package io.github.tahanima.data;
+
+   import com.univocity.parsers.annotations.Parsed;
+
+   import lombok.Getter;
+   import lombok.ToString;
+
+   @Getter
+   @ToString(callSuper = true)
+   public class UserData extends BaseData {
+
+       @Parsed(field = "First Name", defaultNullRead = "")
+       private String firstName;
+
+       @Parsed(field = "Last Name", defaultNullRead = "")
+       private String lastName;
+   }
+   ```
+   Note that the class extends from BaseData and thus, inherits the attributes `Test Case ID` and `Test Case Description`.
+
+   Now, in the [*testdata*](./src/test/resources/testdata) folder you can add a csv file `user.csv` for `User` with the below contents and use it in your tests.
+   ```
+   Test Case ID,Test Case Description,First Name,Last Name
+   TC-1,Successful user creation,Tahanima,Chowdhury
+   ```
+   For reference, check [this](./src/main/java/io/github/tahanima/data/LoginData.java), [this](./src/test/resources/testdata/login.csv) and [this](./src/test/java/io/github/tahanima/e2e/LoginE2ETest.java).
