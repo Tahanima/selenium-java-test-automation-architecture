@@ -173,3 +173,40 @@ The project is structured as follows:
    TC-1,Successful user creation,Tahanima,Chowdhury
    ```
    For reference, check [this](./src/main/java/io/github/tahanima/data/LoginData.java), [this](./src/test/resources/testdata/login.csv) and [this](./src/test/java/io/github/tahanima/e2e/LoginE2ETest.java).
+
+- ### Browser
+  The project contains the implementation of the *Chrome* and *Firefox* browsers. If you want to include an implementation of a new browser type, add the relevant codes in the [*BrowserFactory*](./src/main/java/io/github/tahanima/factory/BrowserFactory.java) enum. Note that the project uses [*WebDriverManager*](https://bonigarcia.dev/webdrivermanager/) for auto-handling the download, setup, and maintenance of browser drivers so the setup code should be in the below format.
+  ```java
+  WebDriverManager.yourdesireddriver().setup();
+  ```
+
+  For example, let's say I want to add the `Edge` browser to the `BrowserFactory` enum. The code for this is:
+  ```java
+  EDGE {
+      @Override
+      public WebDriver getDriver() {
+          WebDriverManager.edgedriver().setup();
+
+          WebDriver driver = new EdgeDriver(getOptions());
+
+          driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(config().timeout()));
+          driver.manage().window().maximize();
+
+          return driver;
+      }
+
+      private EdgeOptions getOptions() {
+          EdgeOptions options = new EdgeOptions();
+
+          options.setAcceptInsecureCerts(true);
+
+          if (Boolean.TRUE.equals(config().headless())) {
+              options.addArguments("--headless=new");
+          }
+
+          return options;
+      }
+  }
+  ```
+
+  Now, you can launch all your tests in the `Edge` browser by either setting the property `browser` to `edge` in the [*config.properties*](./src/test/resources/config.properties) file or as a system property via gradle.
