@@ -14,6 +14,7 @@ git clone https://github.com/[your_username]/selenium-java-test-automation-archi
 3. Import the project in [IntelliJ IDEA](https://www.jetbrains.com/idea/download/).
 4. Make your desired changes.
 5. Use IntelliJ IDEA to run your desired tests. Alternatively, you can use the terminal to run the tests, for example `./gradlew test -Dbrowser=firefox -Dheadless=false` to run all the tests using the firefox browser in headful mode.
+6. To see the report, go to the `testoutput` folder in the project root and then go to the `report` folder.
 
 ## Languages and Frameworks
 
@@ -210,3 +211,9 @@ The project is structured as follows:
   ```
 
   Now, you can launch all your tests in the `Edge` browser by either setting the property `browser` to `edge` in the [*config.properties*](./src/test/resources/config.properties) file or as a system property via gradle.
+
+- ### Page Objects and Page Component Objects
+  The project uses [*Page Objects* and *Page Component Objects*](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/) to capture the relevant behaviors of a web page. Check the [*ui*](./src/main/java/io/github/tahanima/ui) package for reference.
+
+- ### Tests
+  The project uses *TestNG* as the test runner. Check [this implementation](./src/test/java/io/github/tahanima/e2e/LoginE2ETest.java) for reference.
