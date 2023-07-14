@@ -2,8 +2,6 @@ package io.github.tahanima.factory;
 
 import static io.github.tahanima.config.ConfigurationManager.config;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,8 +18,6 @@ public enum BrowserFactory {
     CHROME {
         @Override
         public WebDriver getDriver() {
-            WebDriverManager.chromedriver().setup();
-
             WebDriver driver = new ChromeDriver(getOptions());
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(config().timeout()));
@@ -46,8 +42,6 @@ public enum BrowserFactory {
     FIREFOX {
         @Override
         public WebDriver getDriver() {
-            WebDriverManager.firefoxdriver().setup();
-
             WebDriver driver = new FirefoxDriver(getOptions());
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(config().timeout()));
