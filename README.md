@@ -179,10 +179,10 @@ The project is structured as follows:
    ```json
    [
      {
-       "test_case_id": "TC-1",
-       "test_case_description": "Successful user creation",
-       "first_name": "Tahanima",
-       "last_name": "Chowdhury"
+       "testCaseId": "TC-1",
+       "testCaseDescription": "Successful user creation",
+       "firstName": "Tahanima",
+       "lastName": "Chowdhury"
      }
    ]
    ```
