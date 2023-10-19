@@ -49,7 +49,7 @@ public final class ProductsE2ETest extends BaseE2ETest {
             groups = {"smoke", "regression"},
             retryAnalyzer = TestRetry.class)
     public void testSuccessfulLogout(final ProductsData data) {
-        loginPage.loginAs(data.getUserName(), data.getPassword()).clickOnLogout();
+        loginPage.loginAs(data.getUsername(), data.getPassword()).clickOnLogout();
 
         assertThat(loginPage.getUrl()).isEqualTo(data.getUrl());
     }

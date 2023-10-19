@@ -1,0 +1,86 @@
+[
+  {
+    "testCaseId": "TC-1",
+    "testCaseDescription": "Correct username and correct password should redirect to 'Products' page",
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "errorMessage": ""
+  },
+  {
+    "testCaseId": "TC-1",
+    "testCaseDescription": "Correct username and correct password should redirect to 'Products' page",
+    "username": "problem_user",
+    "password": "secret_sauce",
+    "errorMessage": ""
+  },
+  {
+    "testCaseId": "TC-1",
+    "testCaseDescription": "Correct username and correct password should redirect to 'Products' page",
+    "username": "performance_glitch_user",
+    "password": "secret_sauce",
+    "errorMessage": ""
+  },
+  {
+    "testCaseId": "TC-2",
+    "testCaseDescription": "Incorrect username and correct password should produce errorMessage",
+    "username": "username",
+    "password": "secret_sauce",
+    "errorMessage": "Epic sadface: Username and password do not match any user in this service"
+  },
+  {
+    "testCaseId": "TC-2",
+    "testCaseDescription": "Correct username and incorrect password should produce errorMessage",
+    "username": "standard_user",
+    "password": "password",
+    "errorMessage": "Epic sadface: Username and password do not match any user in this service"
+  },
+  {
+    "testCaseId": "TC-2",
+    "testCaseDescription": "Correct username and incorrect password should produce errorMessage",
+    "username": "locked_out_user",
+    "password": "password",
+    "errorMessage": "Epic sadface: Username and password do not match any user in this service"
+  },
+  {
+    "testCaseId": "TC-2",
+    "testCaseDescription": "Correct username and incorrect password should produce errorMessage",
+    "username": "problem_user",
+    "password": "password",
+    "errorMessage": "Epic sadface: Username and password do not match any user in this service"
+  },
+  {
+    "testCaseId": "TC-2",
+    "testCaseDescription": "Correct username and incorrect password should produce errorMessage",
+    "username": "performance_glitch_user",
+    "password": "password",
+    "errorMessage": "Epic sadface: Username and password do not match any user in this service"
+  },
+  {
+    "testCaseId": "TC-2",
+    "testCaseDescription": "Incorrect username and incorrect password should produce errorMessage",
+    "username": "demo_username",
+    "password": "demo_password",
+    "errorMessage": "Epic sadface: Username and password do not match any user in this service"
+  },
+  {
+    "testCaseId": "TC-2",
+    "testCaseDescription": "Blank username should produce errorMessage",
+    "username": "",
+    "password": "demo_password",
+    "errorMessage": "Epic sadface: Username is required"
+  },
+  {
+    "testCaseId": "TC-2",
+    "testCaseDescription": "Blank password should produce errorMessage",
+    "username": "demo_username",
+    "password": "",
+    "errorMessage": "Epic sadface: Password is required"
+  },
+  {
+    "testCaseId": "TC-2",
+    "testCaseDescription": "Should produce errorMessage for locked out user",
+    "username": "locked_out_user",
+    "password": "secret_sauce",
+    "errorMessage": "Epic sadface: Sorry, this user has been locked out."
+  }
+]
