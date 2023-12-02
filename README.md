@@ -146,10 +146,10 @@ The project is structured as follows:
 - ### Test Data
   The project uses *csv* or *json* file to store test data and [*univocity-parsers*](https://github.com/uniVocity/univocity-parsers) to retrieve the data and map it to a Java bean.
 
-  To add configurations for new test data, add a new Java bean in the [*data*](./src/main/java/io/github/tahanima/data) package. For example, let's say I want to add test data for a `User` with the attributes `First Name` and `Last Name`. The code for this is as follows:
-     
+  To add configurations for new test data, add a new Java bean in the [*data*](./src/main/java/io/github/tahanima/dto) package. For example, let's say I want to add test data for a `User` with the attributes `First Name` and `Last Name`. The code for this is as follows:
+
    ```java
-   package io.github.tahanima.data;
+   package io.github.tahanima.dto;
 
    import com.univocity.parsers.annotations.Parsed;
 
@@ -186,7 +186,7 @@ The project is structured as follows:
      }
    ]
    ```
-   For reference, check [this](./src/main/java/io/github/tahanima/data/LoginData.java), [this](./src/test/resources/testdata/login.csv) and [this](./src/test/java/io/github/tahanima/e2e/LoginE2ETest.java).
+   For reference, check [this](./src/main/java/io/github/tahanima/dto/LoginData.java), [this](./src/test/resources/testdata/login.csv) and [this](./src/test/java/io/github/tahanima/e2e/LoginE2ETest.java).
 
 - ### Browser
   The project contains the implementation of the *Chrome* and *Firefox* browsers. If you want to include an implementation of a new browser type, add the relevant codes in the [*BrowserFactory*](./src/main/java/io/github/tahanima/factory/BrowserFactory.java) enum.

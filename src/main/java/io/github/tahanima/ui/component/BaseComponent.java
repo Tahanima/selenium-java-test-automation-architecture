@@ -9,7 +9,7 @@ public abstract class BaseComponent {
 
     protected WebDriver driver;
 
-    public BaseComponent(WebDriver driver) {
+    protected BaseComponent(WebDriver driver) {
         this.driver = driver;
     }
 }

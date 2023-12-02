@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.seleniumhq.selenium:selenium-java:4.14.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
     implementation 'org.aeonbits.owner:owner:1.0.12'
     implementation 'com.univocity:univocity-parsers:2.9.1'
     implementation 'com.aventstack:extentreports:5.1.1'
@@ -26,6 +26,8 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     testImplementation 'org.testng:testng:7.8.0'
     testImplementation 'org.assertj:assertj-core:3.24.2'

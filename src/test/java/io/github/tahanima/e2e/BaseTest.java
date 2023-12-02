@@ -16,7 +16,7 @@ import org.testng.annotations.Listeners;
  * @author tahanima
  */
 @Listeners(TestListener.class)
-public abstract class BaseE2ETest {
+public abstract class BaseTest {
 
     private final WebDriver driver =
             BrowserFactory.valueOf(config().browser().toUpperCase()).getDriver();
@@ -28,10 +28,6 @@ public abstract class BaseE2ETest {
 
     protected String getScreenshotFilePath(String path) {
         return config().baseScreenshotPath() + path;
-    }
-
-    public WebDriver getDriver() {
-        return driver;
     }
 
     @BeforeClass(alwaysRun = true)

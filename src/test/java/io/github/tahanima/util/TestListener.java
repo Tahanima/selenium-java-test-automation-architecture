@@ -5,7 +5,7 @@ import static io.github.tahanima.config.ConfigurationManager.config;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.MediaEntityBuilder;
 
-import io.github.tahanima.data.BaseData;
+import io.github.tahanima.dto.BaseDto;
 import io.github.tahanima.report.ExtentReportManager;
 
 import org.apache.commons.text.StringEscapeUtils;
@@ -29,7 +29,7 @@ public class TestListener implements ITestListener {
         String testData = "No data parameters are found.";
 
         if (result.getParameters().length > 0) {
-            BaseData data = (BaseData) result.getParameters()[0];
+            BaseDto data = (BaseDto) result.getParameters()[0];
             testCaseId = data.getTestCaseId();
             testCaseDescription = data.getTestCaseDescription();
             testData = StringEscapeUtils.escapeHtml4(data.toString());
@@ -54,7 +54,7 @@ public class TestListener implements ITestListener {
         String testData = "No data parameters are found.";
 
         if (result.getParameters().length > 0) {
-            BaseData data = (BaseData) result.getParameters()[0];
+            BaseDto data = (BaseDto) result.getParameters()[0];
             testCaseId = data.getTestCaseId();
             testCaseDescription = data.getTestCaseDescription();
             testData = StringEscapeUtils.escapeHtml4(data.toString());
@@ -89,7 +89,7 @@ public class TestListener implements ITestListener {
         String testData = "No data parameters are found.";
 
         if (result.getParameters().length > 0) {
-            BaseData data = (BaseData) result.getParameters()[0];
+            BaseDto data = (BaseDto) result.getParameters()[0];
             testCaseId = data.getTestCaseId();
             testCaseDescription = data.getTestCaseDescription();
             testData = StringEscapeUtils.escapeHtml4(data.toString());

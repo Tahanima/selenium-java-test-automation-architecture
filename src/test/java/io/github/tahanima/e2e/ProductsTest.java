@@ -4,8 +4,7 @@ import static io.github.tahanima.util.DataProviderUtil.processTestData;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import io.github.tahanima.data.LoginData;
-import io.github.tahanima.ui.page.ProductsPage;
+import io.github.tahanima.dto.ProductsDto;
 import io.github.tahanima.util.TestRetry;
 
 import org.testng.ITestNGMethod;
@@ -19,15 +18,15 @@ import java.lang.reflect.Method;
 /**
  * @author tahanima
  */
-public final class LoginE2ETest extends BaseE2ETest {
+public final class ProductsTest extends BaseTest {
 
-    private static final String FILE_PATH = "login.csv";
+    private static final String FILE_PATH = "products.json";
 
-    @DataProvider(name = "loginData")
-    public Object[][] getLoginData(final Method testMethod) {
+    @DataProvider(name = "productsData")
+    public Object[][] getProductsData(final Method testMethod) {
         String testCaseId = testMethod.getAnnotation(Test.class).testName();
 
-        return processTestData(LoginData.class, getTestDataFilePath(FILE_PATH), testCaseId);
+        return processTestData(ProductsDto.class, getTestDataFilePath(FILE_PATH), testCaseId);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -46,23 +45,12 @@ public final class LoginE2ETest extends BaseE2ETest {
 
     @Test(
             testName = "TC-1",
-            dataProvider = "loginData",
+            dataProvider = "productsData",
             groups = {"smoke", "regression"},
             retryAnalyzer = TestRetry.class)
-    public void testCorrectUserNameAndCorrectPassword(final LoginData data) {
-        ProductsPage productsPage = loginPage.loginAs(data.getUsername(), data.getPassword());
+    public void testSuccessfulLogout(final ProductsDto data) {
+        loginPage.loginAs(data.getUsername(), data.getPassword()).clickOnLogout();
 
-        assertThat(productsPage.getTitle()).isEqualTo("Products");
-    }
-
-    @Test(
-            testName = "TC-2",
-            dataProvider = "loginData",
-            groups = {"validation", "regression"},
-            retryAnalyzer = TestRetry.class)
-    public void testImproperCredentialsShouldGiveErrorMessage(final LoginData data) {
-        loginPage.loginAs(data.getUsername(), data.getPassword());
-
-        assertThat(loginPage.getErrorMessage()).isEqualTo(data.getErrorMessage());
+        assertThat(loginPage.getUrl()).isEqualTo(data.getUrl());
     }
 }

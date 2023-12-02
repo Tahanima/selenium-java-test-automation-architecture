@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author tahanima
@@ -36,7 +37,7 @@ public final class ExtentReportManager {
         extentReport.setSystemInfo(
                 "Test Group",
                 StringUtils.capitalize(
-                        StringUtils.defaultString(System.getProperty("groups"), "regression")));
+                        Objects.toString(System.getProperty("groups"), "regression")));
 
         return extentReport;
     }

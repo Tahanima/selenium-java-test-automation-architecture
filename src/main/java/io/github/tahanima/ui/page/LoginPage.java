@@ -28,7 +28,7 @@ public final class LoginPage extends BasePage {
         return this;
     }
 
-    private void clearAndType(WebElement elem, String text) {
+    private void clearAndType(final WebElement elem, final String text) {
         elem.clear();
         elem.sendKeys(text);
     }
