@@ -13,7 +13,7 @@ import lombok.ToString;
 public final class ProductsData extends BaseData {
 
     @Parsed(field = "User Name", defaultNullRead = "")
-    private String userName;
+    private String username;
 
     @Parsed(field = "Password", defaultNullRead = "")
     private String password;

@@ -1,0 +1,9 @@
+[
+  {
+    "testCaseId": "TC-1",
+    "testCaseDescription": "Logging out should redirect to login page",
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "url": "https://www.saucedemo.com/"
+  }
+]

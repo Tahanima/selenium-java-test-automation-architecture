@@ -1,6 +1,6 @@
 package io.github.tahanima.e2e;
 
-import static io.github.tahanima.util.DataProviderUtil.processCsv;
+import static io.github.tahanima.util.DataProviderUtil.processTestData;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -26,7 +26,7 @@ public final class ProductsE2ETest extends BaseE2ETest {
     public Object[][] getProductsData(final Method testMethod) {
         String testCaseId = testMethod.getAnnotation(Test.class).testName();
 
-        return processCsv(ProductsData.class, getTestDataFilePath(FILE_PATH), testCaseId);
+        return processTestData(ProductsData.class, getTestDataFilePath(FILE_PATH), testCaseId);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -49,7 +49,7 @@ public final class ProductsE2ETest extends BaseE2ETest {
             groups = {"smoke", "regression"},
             retryAnalyzer = TestRetry.class)
     public void testSuccessfulLogout(final ProductsData data) {
-        loginPage.loginAs(data.getUserName(), data.getPassword()).clickOnLogout();
+        loginPage.loginAs(data.getUsername(), data.getPassword()).clickOnLogout();
 
         assertThat(loginPage.getUrl()).isEqualTo(data.getUrl());
     }

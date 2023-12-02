@@ -99,7 +99,9 @@ The project is structured as follows:
          ├─ config.properties
          └─ testdata
             ├─ login.csv
+            ├─ login.json
             └─ products.csv
+            └─ products.json
 ```
 
 ## Basic Usage
@@ -142,7 +144,7 @@ The project is structured as follows:
       ```
       
 - ### Test Data
-  The project uses *csv* file to store test data and [*univocity-parsers*](https://github.com/uniVocity/univocity-parsers) to retrieve the data and map it to a Java bean.
+  The project uses *csv* or *json* file to store test data and [*univocity-parsers*](https://github.com/uniVocity/univocity-parsers) to retrieve the data and map it to a Java bean.
 
   To add configurations for new test data, add a new Java bean in the [*data*](./src/main/java/io/github/tahanima/data) package. For example, let's say I want to add test data for a `User` with the attributes `First Name` and `Last Name`. The code for this is as follows:
      
@@ -171,6 +173,18 @@ The project is structured as follows:
    ```
    Test Case ID,Test Case Description,First Name,Last Name
    TC-1,Successful user creation,Tahanima,Chowdhury
+   ```
+  
+   Alternately you can use a json file `user.json` with the below contents and use it in your tests.
+   ```json
+   [
+     {
+       "testCaseId": "TC-1",
+       "testCaseDescription": "Successful user creation",
+       "firstName": "Tahanima",
+       "lastName": "Chowdhury"
+     }
+   ]
    ```
    For reference, check [this](./src/main/java/io/github/tahanima/data/LoginData.java), [this](./src/test/resources/testdata/login.csv) and [this](./src/test/java/io/github/tahanima/e2e/LoginE2ETest.java).
 

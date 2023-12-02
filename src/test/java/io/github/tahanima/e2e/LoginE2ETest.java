@@ -1,6 +1,6 @@
 package io.github.tahanima.e2e;
 
-import static io.github.tahanima.util.DataProviderUtil.processCsv;
+import static io.github.tahanima.util.DataProviderUtil.processTestData;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -27,7 +27,7 @@ public final class LoginE2ETest extends BaseE2ETest {
     public Object[][] getLoginData(final Method testMethod) {
         String testCaseId = testMethod.getAnnotation(Test.class).testName();
 
-        return processCsv(LoginData.class, getTestDataFilePath(FILE_PATH), testCaseId);
+        return processTestData(LoginData.class, getTestDataFilePath(FILE_PATH), testCaseId);
     }
 
     @AfterMethod(alwaysRun = true)
