@@ -40,6 +40,7 @@ The project is structured as follows:
 📦 selenium-java-test-automation-architecture
 ├─ .github
 │  ├─ FUNDING.yml
+│  ├─ dependabot.yml
 │  └─ workflows
 │     └─ test-execution.yml
 ├─ .gitignore
@@ -64,10 +65,10 @@ The project is structured as follows:
    │              ├─ config
    │              │  ├─ Configuration.java
    │              │  └─ ConfigurationManager.java
-   │              ├─ data
-   │              │  ├─ BaseData.java
-   │              │  ├─ LoginData.java
-   │              │  └─ ProductsData.java
+   │              ├─ dto
+   │              │  ├─ BaseDto.java
+   │              │  ├─ LoginDto.java
+   │              │  └─ ProductsDto.java
    │              ├─ factory
    │              │  ├─ BasePageFactory.java
    │              │  └─ BrowserFactory.java
@@ -88,9 +89,9 @@ The project is structured as follows:
       │     └─ github
       │        └─ tahanima
       │           ├─ e2e
-      │           │  ├─ BaseE2ETest.java
-      │           │  ├─ LoginE2ETest.java
-      │           │  └─ ProductsE2ETest.java
+      │           │  ├─ BaseTest.java
+      │           │  ├─ LoginTest.java
+      │           │  └─ ProductsTest.java
       │           └─ util
       │              ├─ DataProviderUtil.java
       │              ├─ TestListener.java
@@ -100,7 +101,7 @@ The project is structured as follows:
          └─ testdata
             ├─ login.csv
             ├─ login.json
-            └─ products.csv
+            ├─ products.csv
             └─ products.json
 ```
 
@@ -146,7 +147,7 @@ The project is structured as follows:
 - ### Test Data
   The project uses *csv* or *json* file to store test data and [*univocity-parsers*](https://github.com/uniVocity/univocity-parsers) to retrieve the data and map it to a Java bean.
 
-  To add configurations for new test data, add a new Java bean in the [*data*](./src/main/java/io/github/tahanima/dto) package. For example, let's say I want to add test data for a `User` with the attributes `First Name` and `Last Name`. The code for this is as follows:
+  To add configurations for new test data, add a new Java bean in the [*dto*](./src/main/java/io/github/tahanima/dto) package. For example, let's say I want to add test data for a `User` with the attributes `First Name` and `Last Name`. The code for this is as follows:
 
    ```java
    package io.github.tahanima.dto;
@@ -158,7 +159,7 @@ The project is structured as follows:
 
    @Getter
    @ToString(callSuper = true)
-   public class UserData extends BaseData {
+   public class UserDto extends BaseDto {
 
        @Parsed(field = "First Name", defaultNullRead = "")
        private String firstName;
@@ -167,7 +168,7 @@ The project is structured as follows:
        private String lastName;
    }
    ```
-   Note that the class extends from BaseData and thus, inherits the attributes `Test Case ID` and `Test Case Description`.
+   Note that the class extends from BaseDto and thus, inherits the attributes `Test Case ID` and `Test Case Description`.
 
    Now, in the [*testdata*](./src/test/resources/testdata) folder you can add a csv file `user.csv` for `User` with the below contents and use it in your tests.
    ```
@@ -175,7 +176,7 @@ The project is structured as follows:
    TC-1,Successful user creation,Tahanima,Chowdhury
    ```
   
-   Alternately you can use a json file `user.json` with the below contents and use it in your tests.
+   Alternately, you can use a json file `user.json` with the below contents and use it in your tests.
    ```json
    [
      {
@@ -186,7 +187,7 @@ The project is structured as follows:
      }
    ]
    ```
-   For reference, check [this](./src/main/java/io/github/tahanima/dto/LoginData.java), [this](./src/test/resources/testdata/login.csv) and [this](./src/test/java/io/github/tahanima/e2e/LoginE2ETest.java).
+   For reference, check [this](./src/main/java/io/github/tahanima/dto/LoginDto.java), [this](./src/test/resources/testdata/login.csv) and [this](./src/test/java/io/github/tahanima/e2e/LoginTest.java).
 
 - ### Browser
   The project contains the implementation of the *Chrome* and *Firefox* browsers. If you want to include an implementation of a new browser type, add the relevant codes in the [*BrowserFactory*](./src/main/java/io/github/tahanima/factory/BrowserFactory.java) enum.
@@ -224,4 +225,4 @@ The project is structured as follows:
   The project uses [*Page Objects* and *Page Component Objects*](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/) to capture the relevant behaviors of a web page. Check the [*ui*](./src/main/java/io/github/tahanima/ui) package for reference.
 
 - ### Tests
-  The project uses *TestNG* as the test runner. Check [this implementation](./src/test/java/io/github/tahanima/e2e/LoginE2ETest.java) for reference.
+  The project uses *TestNG* as the test runner. Check [this implementation](./src/test/java/io/github/tahanima/e2e/LoginTest.java) for reference.
