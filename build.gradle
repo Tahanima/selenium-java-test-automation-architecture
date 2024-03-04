@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.18.1'
     implementation 'org.aeonbits.owner:owner:1.0.12'
     implementation 'com.univocity:univocity-parsers:2.9.1'
     implementation 'com.aventstack:extentreports:5.1.1'
